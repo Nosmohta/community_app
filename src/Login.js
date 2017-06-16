@@ -7,7 +7,7 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.handleLoginClick = this.handleLoginClick.bind(this);
-    this.handleLogoutClick = this.handleLogoutClick.bind(this);
+    this.handleBackClick = this.handleBackClick.bind(this);
     this.state = {registrationForm: false, loginForm: false};
   }
 
@@ -15,7 +15,7 @@ class Login extends Component {
     this.setState({registrationForm: true});
   }
 
-  handleLogoutClick() {
+  handleBackClick() {
     this.setState({registrationForm: false});
   }
 
@@ -24,7 +24,7 @@ class Login extends Component {
 
     let button = null;
     if (registrationForm) {
-      button = <LogoutButton onClick={this.handleLogoutClick} />;
+      button = <BackButton onClick={this.handleBackClick} />;
     } else {
       button = <LoginButton onClick={this.handleLoginClick} />;
     }
@@ -43,24 +43,12 @@ function ShowRegistration(props) {
     <Columns>
     <form className="register">
     <h1>Community Login</h1>
-       <p className="control">
-        <input className="input" type="text" placeholder="First Name"/>
-      </p>
-      <br></br>
-      <p className="control">
-        <input className="input" type="text" placeholder="Last Name"/>
-      </p>
-       <br></br>
       <p className="control">
         <input className="input" type="text" placeholder="Email"/>
       </p>
       <br></br>
       <p className="control">
         <input className="input" type="password" placeholder="Password"/>
-      </p>
-      <br></br>
-      <p className="control">
-        <input className="input" type="password" placeholder="Confirm"/>
       </p>
     </form>
     </Columns>
@@ -83,19 +71,16 @@ function LoginButton(props) {
   return (
     <div>
     <button onClick={props.onClick}>
-      Register
-    </button>
-    <button onClick={props.onClick}>
       Login
     </button>
     </div>
   );
 }
 
-function LogoutButton(props) {
+function BackButton(props) {
   return (
     <button onClick={props.onClick}>
-      Logout
+      Back
     </button>
   );
 }
