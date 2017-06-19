@@ -6,6 +6,7 @@ import Home from './Home.js';
 import { Switch, Route } from 'react-router-dom'
 import './App.css';
 import 'bulma/css/bulma.css'
+import Users from './Users.js';
 
 
 class App extends Component {
@@ -16,6 +17,7 @@ class App extends Component {
               <Route path='/home' component={Home}/>
              <Route path='/login' component={Login}/>
              <Route path='/register' component={Register}/>
+              <Route path='/users' component={Users}/>
             </Switch>
         </div>
       );
