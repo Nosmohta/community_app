@@ -19,7 +19,7 @@ class Register extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-handleSubmit(event) {
+  handleSubmit(event) {
     alert('A form was submitted: ' + this.state.email + ' ' + this.state.lastname + ' ' + this.state.firstname);
     event.preventDefault();
   }
@@ -29,12 +29,12 @@ handleSubmit(event) {
     this.setState({firstname: event.target.value});
   }
 
-   handleLastname(event) {
+  handleLastname(event) {
     console.log(event.target.value)
     this.setState({lastname: event.target.value});
   }
 
-   handleEmail(event) {
+  handleEmail(event) {
     console.log(event.target.value)
     this.setState({email: event.target.value});
   }
@@ -49,28 +49,28 @@ handleSubmit(event) {
   return (
 
     <Columns>
-    <form className="register">
-    <img className="logo" src="YourCityLogo.png" alt="Smiley face" height="150" width="150"/ >
-    <h1 className="form-title">Community Sign Up!</h1>
-    <br></br>
-       <p className="control">
-        <input className="input"  value={this.state.firstname} onChange={this.handleFirstname}type="text" placeholder="First Name" ref="firstame"/>
-      </p>
-      <br></br>
-      <p className="control">
-        <input className="input"  value={this.state.lastname}  onChange={this.handleLastname}type="text" placeholder="Last Name" ref="lastname"/>
-      </p>
-       <br></br>
-      <p className="control">
-        <input className="input"  value={this.state.email} onChange={this.handleEmail} type="text" placeholder="Email" ref="email"/>
-      </p>
-      <br></br>
-      <p className="control">
-        <input className="input"  value={this.state.password} onChange={this.handlePassword} type="password" placeholder="Password" ref="password"/>
-      </p>
-      <br></br>
-      <button className="button is-outlined is-large" type="submit" onClick={this.handleSubmit}>Join the Community!</button>
-    </form>
+      <form className="register">
+        <img className="logo" src="YourCityLogo.png" alt="Smiley face" height="150" width="150"/ >
+        <h1 className="form-title">Community Sign Up!</h1>
+        <br></br>
+        <p className="control">
+          <input className="input"  value={this.state.firstname} onChange={this.handleFirstname}type="text" placeholder="First Name" ref="firstame"/>
+        </p>
+        <br></br>
+        <p className="control">
+          <input className="input"  value={this.state.lastname}  onChange={this.handleLastname}type="text" placeholder="Last Name" ref="lastname"/>
+        </p>
+         <br></br>
+        <p className="control">
+          <input className="input"  value={this.state.email} onChange={this.handleEmail} type="text" placeholder="Email" ref="email"/>
+        </p>
+        <br></br>
+        <p className="control">
+          <input className="input"  value={this.state.password} onChange={this.handlePassword} type="password" placeholder="Password" ref="password"/>
+        </p>
+        <br></br>
+        <button className="button is-outlined is-large" type="submit" onClick={this.handleSubmit}>Join the Community!</button>
+      </form>
     </Columns>
     );
   }
