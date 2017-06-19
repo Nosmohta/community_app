@@ -1,17 +1,82 @@
-div {
+/*div {
   border-style: solid;
    border-width: 0.2px;
-}
+}*/
 
 ::placeholder {
   color: white;
+  opacity: 0.7;
 }
 
 form.register {
-  background-color: #557EBF;
+  background: linear-gradient(#8FB6E2, #567FC0);
   color: white;
   border-style: none;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  padding: 40px 20px 40px 20px;
+  width: 400px;
+  border-radius: 40px;
+  opacity: 0.8;
+  margin-top: 5%;
+  position: relative;
+  top: 100px;
+}
+
+form:hover {
+opacity: .95;
+}
+
+.input {
+  background-color: #557EBF;
+  width: 90%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 2px solid white;
+  font-size: 20px;
+}
+
+.input:focus {
+    border-color: white;
+}
+
+.button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+  background: none;
+  color: white;
+}
+.button:hover {
+  background: #BF6562;
+  color: white;
+
+}
+
+.form-title {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p.home-form {
+  text-align: center;
+  font-size: 30px;
+}
+h1.Home {
+  color:black;
+  font-size: 100px;
 }

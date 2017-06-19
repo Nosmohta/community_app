@@ -5,96 +5,75 @@ import {Columns} from 'bulma-components'
 
 class Register extends Component {
   constructor(props) {
-    super(props);
-    this.handleRegisterClick = this.handleRegisterClick.bind(this);
-    this.handleBackClick = this.handleBackClick.bind(this);
-    this.state = {registrationForm: false, RegisterForm: false};
+      super(props);
+    this.state = {
+                   firstname:'',
+                   lastname:'',
+                   email: '',
+                   password:''
+                 };
+    this.handleFirstname = this.handleFirstname.bind(this);
+    this.handleLastname = this.handleLastname.bind(this);
+    this.handleEmail = this.handleEmail.bind(this);
+     this.handlePassword = this.handlePassword.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+handleSubmit(event) {
+    alert('A form was submitted: ' + this.state.email + ' ' + this.state.lastname + ' ' + this.state.firstname);
+    event.preventDefault();
   }
 
-  handleRegisterClick() {
-    this.setState({registrationForm: true});
+  handleFirstname(event) {
+    console.log(event.target.value)
+    this.setState({firstname: event.target.value});
   }
 
-  handleBackClick() {
-    this.setState({registrationForm: false});
+   handleLastname(event) {
+    console.log(event.target.value)
+    this.setState({lastname: event.target.value});
+  }
+
+   handleEmail(event) {
+    console.log(event.target.value)
+    this.setState({email: event.target.value});
+  }
+
+  handlePassword(event) {
+    console.log(event.target.value)
+    this.setState({password: event.target.value});
   }
 
   render() {
-    const registrationForm = this.state.registrationForm;
 
-    let button = null;
-    if (registrationForm) {
-      button = <BackButton onClick={this.handleBackClick} />;
-    } else {
-      button = <RegisterButton onClick={this.handleRegisterClick} />;
-    }
-
-    return (
-      <div>
-        <Greeting registrationForm={registrationForm} />
-        {button}
-      </div>
-    );
-  }
-}
-
-function ShowRegistration(props) {
   return (
+
     <Columns>
     <form className="register">
-    <h1>Community Register</h1>
+    <img className="logo" src="YourCityLogo.png" alt="Smiley face" height="150" width="150"/ >
+    <h1 className="form-title">Community Sign Up!</h1>
+    <br></br>
        <p className="control">
-        <input className="input" type="text" placeholder="First Name"/>
+        <input className="input"  value={this.state.firstname} onChange={this.handleFirstname}type="text" placeholder="First Name" ref="firstame"/>
       </p>
       <br></br>
       <p className="control">
-        <input className="input" type="text" placeholder="Last Name"/>
+        <input className="input"  value={this.state.lastname}  onChange={this.handleLastname}type="text" placeholder="Last Name" ref="lastname"/>
       </p>
        <br></br>
       <p className="control">
-        <input className="input" type="text" placeholder="Email"/>
+        <input className="input"  value={this.state.email} onChange={this.handleEmail} type="text" placeholder="Email" ref="email"/>
       </p>
       <br></br>
       <p className="control">
-        <input className="input" type="password" placeholder="Password"/>
+        <input className="input"  value={this.state.password} onChange={this.handlePassword} type="password" placeholder="Password" ref="password"/>
       </p>
       <br></br>
-      <p className="control">
-        <input className="input" type="password" placeholder="Confirm"/>
-      </p>
+      <button className="button is-outlined is-large" type="submit" onClick={this.handleSubmit}>Join the Community!</button>
     </form>
     </Columns>
     );
-}
-
-function GuestGreeting(props) {
-  return <h1>Community App</h1>;
-}
-
-function Greeting(props) {
-  const registrationForm = props.registrationForm;
-  if (registrationForm) {
-    return <ShowRegistration />;
   }
-  return <GuestGreeting />;
-}
-
-function RegisterButton(props) {
-  return (
-    <div>
-    <button onClick={props.onClick}>
-      Register
-    </button>
-    </div>
-  );
-}
-
-function BackButton(props) {
-  return (
-    <button onClick={props.onClick}>
-      Back
-    </button>
-  );
 }
 
 export default Register;

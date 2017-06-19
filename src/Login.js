@@ -4,85 +4,59 @@ import {Columns} from 'bulma-components'
 
 
 class Login extends Component {
+
   constructor(props) {
-    super(props);
-    this.handleLoginClick = this.handleLoginClick.bind(this);
-    this.handleBackClick = this.handleBackClick.bind(this);
-    this.state = {registrationForm: false, loginForm: false};
-  }
+      super(props);
+    this.state = {
+                   firstname:'',
+                   lastname:'',
+                   email: '',
+                   password:''
+                 };
 
-  handleLoginClick() {
-    this.setState({registrationForm: true});
-  }
-
-  handleBackClick() {
-    this.setState({registrationForm: false});
-  }
-
-  render() {
-    const registrationForm = this.state.registrationForm;
-
-    let button = null;
-    if (registrationForm) {
-      button = <BackButton onClick={this.handleBackClick} />;
-    } else {
-      button = <LoginButton onClick={this.handleLoginClick} />;
+    this.handleEmail = this.handleEmail.bind(this);
+     this.handlePassword = this.handlePassword.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    return (
-      <div>
-        <Greeting registrationForm={registrationForm} />
-        {button}
-      </div>
-    );
+handleSubmit(event) {
+    alert('A form was submitted: ' + this.state.email + ' '  + this.state.password);
+    event.preventDefault();
   }
-}
 
-function ShowRegistration(props) {
+   handleEmail(event) {
+    console.log(event.target.value)
+    this.setState({email: event.target.value});
+  }
+
+  handlePassword(event) {
+    console.log(event.target.value)
+    this.setState({password: event.target.value});
+  }
+
+
+  render() {
+
+
+
   return (
     <Columns>
     <form className="register">
-    <h1>Community Login</h1>
+    <img className="logo" src="YourCityLogo.png" alt="Smiley face" height="150" width="150"/ >
+    <h1 className="form-title">Community Login</h1>
       <p className="control">
-        <input className="input" type="text" placeholder="Email"/>
+        <input className="input"  value={this.state.email} onChange={this.handleEmail} type="text" placeholder="Email" ref="email"/>
       </p>
       <br></br>
       <p className="control">
-        <input className="input" type="password" placeholder="Password"/>
+        <input className="input"  value={this.state.password} onChange={this.handlePassword} type="password" placeholder="Password" ref="password"/>
       </p>
+      <br></br>
+     <button className="button is-outlined is-large" type="submit" onClick={this.handleSubmit}>Login</button>
     </form>
     </Columns>
     );
-}
 
-function GuestGreeting(props) {
-  return <h1>Community App</h1>;
 }
-
-function Greeting(props) {
-  const registrationForm = props.registrationForm;
-  if (registrationForm) {
-    return <ShowRegistration />;
-  }
-  return <GuestGreeting />;
 }
-
-function LoginButton(props) {
-  return (
-    <div>
-    <button onClick={props.onClick}>
-      Login
-    </button>
-    </div>
-  );
-}
-
-function BackButton(props) {
-  return (
-    <button onClick={props.onClick}>
-      Back
-    </button>
-  );
-}
-
 export default Login;
