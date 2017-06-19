@@ -5,6 +5,11 @@ import React, {Component} from 'react';
 import UserList from './UserList'
 
 class Users extends Component {
+  componentDidMount() {
+  console.log('from users ', this.props)
+}
+
+
   render() {
 
 return (
@@ -21,7 +26,9 @@ return (
 
 function mapStateToProps(state, ownProps) {
 
-  console.log(state)
+  return {
+    users: state.users
+  };
 
 }
 export default connect(mapStateToProps)(Users);

@@ -12,5 +12,5 @@ export function loadUsers() {
 }
 
 export function loadUsersSuccess(users) {
-  return {type: 'LOAD_USERS_SUCCESS', users};
+  return {type: 'LOAD_USERS_SUCCESS', users: users};
 }
