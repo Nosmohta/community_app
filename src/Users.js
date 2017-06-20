@@ -3,10 +3,11 @@ import {connect} from 'react-redux';
 import * as userActions from './actions/userActions';
 import React, {Component} from 'react';
 import UserList from './UserList'
+import {loadUsers} from './actions/userActions';
 
 class Users extends Component {
   componentDidMount() {
-  console.log('from users ', this.props)
+
 }
 
 
@@ -25,10 +26,10 @@ return (
 }
 
 function mapStateToProps(state, ownProps) {
-
+console.log('from users ', state)
   return {
     users: state.users
   };
-
 }
 export default connect(mapStateToProps)(Users);
+//export default Users

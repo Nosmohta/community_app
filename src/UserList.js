@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 class UserList extends Component {
 
 componentDidMount() {
-  console.log('from userlist ', this.props.users)
+  console.log('from userlist ', this.props)
 }
 render () {
   return (
