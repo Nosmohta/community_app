@@ -8,28 +8,34 @@ class Login extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {credentials: {email: '',password:''}};
-
+    this.state = {
+      email: '',
+      password:''
+    };
 
     this.handleEmail = this.handleEmail.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-
   handleSubmit(event) {
-    alert('A form was submitted: ' + this.state.credentials.email + ' '  + this.state.credentials.password);
     event.preventDefault();
+    console.log(this.state);
+    store.dispatch({
+      action: 'ATTEMPT_LOGIN',
+      payload: {
+        email: this.state.email,
+        password: this.state.password
+      }
+    })
   }
 
   handleEmail(event) {
-    console.log(event.target.value)
-    this.setState({credentials:{email: event.target.value}});
+    this.setState({email: event.target.value});
   }
 
   handlePassword(event) {
-    console.log(event.target.value)
-    this.setState({credentials:{password: event.target.value}});
+    this.setState({password: event.target.value});
   }
 
 
@@ -41,11 +47,11 @@ class Login extends Component {
       <img className="logo" src="YourCityLogo.png" alt="Smiley face" height="150" width="150"/ >
       <h1 className="form-title">Community Login</h1>
         <p className="control">
-          <input className="input"  value={this.state.credentials.email} onChange={this.handleEmail} type="text" placeholder="Email" ref="email"/>
+          <input className="input"  value={this.state.email} onChange={this.handleEmail} type="text" placeholder="Email" ref="email"/>
         </p>
         <br></br>
         <p className="control">
-          <input className="input"  value={this.state.credentials.password} onChange={this.handlePassword} type="password" placeholder="Password" ref="password"/>
+          <input className="input"  value={this.state.password} onChange={this.handlePassword} type="password" placeholder="Password" ref="password"/>
         </p>
         <br></br>
        <button className="button is-outlined is-large" type="submit" onClick={this.handleSubmit}>Login</button>

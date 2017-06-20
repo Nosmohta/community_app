@@ -13,13 +13,16 @@ import initialState from './initialState';
 //   }
 // };
 
+//map state to props??
+
 export default function userReducer(state = initialState.users, action) {
 
   switch(action.type) {
     case 'LOAD_USERS_SUCCESS':
-    console.log(action.users)
+      console.log(action.users)
       return state.users = action.users
-       default:
+    default:
       return state;
   }
 }
+

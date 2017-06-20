@@ -11,11 +11,10 @@ import {loadUsers} from './actions/userActions';
 
 const store = configureStore();
 
-store.dispatch(loadUsers());
-
 ReactDOM.render(
   <Provider store={store}>
   <BrowserRouter><App/></BrowserRouter>
   </Provider>,
-  document.getElementById('root'));
+  document.getElementById('root')
+);
 registerServiceWorker();
