@@ -27,9 +27,8 @@ return (
 
 function mapStateToProps(state, ownProps) {
 console.log('from users ', state)
-  return {
-    users: state.users
-  };
+  return state.users
+
 }
 export default connect(mapStateToProps)(Users);
 //export default Users
