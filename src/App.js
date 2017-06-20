@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './Header.js';
 import Register from './Register.js';
 import Login from './Login.js';
+import Topics from './Topics.js';
 import Home from './Home.js';
 import { Switch, Route } from 'react-router-dom'
 import './App.css';
@@ -15,8 +16,9 @@ class App extends Component {
         <div>
            <Switch>
               <Route path='/home' component={Home}/>
-             <Route path='/login' component={Login}/>
-             <Route path='/register' component={Register}/>
+               <Route path='/topics' component={Topics}/>
+              <Route path='/login' component={Login}/>
+              <Route path='/register' component={Register}/>
               <Route path='/users' component={Users}/>
             </Switch>
         </div>
