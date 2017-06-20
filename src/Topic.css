@@ -1,0 +1,51 @@
+div.topics-canvas {
+  background-color: white;
+  height: 100%;
+  margin: 0px 100px 0px 100px;
+}
+
+.card {
+  width: 45%;
+  margin: auto;
+}
+
+.triangle-up {
+
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid grey;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+.triangle-up:hover {
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid green;
+}
+
+.triangle-down {
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-top: 50px solid grey;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+.triangle-down:hover {
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-top: 50px solid red;
+}
+
+div span {
+  position: absolute;
+  top: 15px;
+  right: -10px;
+  margin: auto;
+}
+
+div.content {
+  padding-right: 20px;
+}

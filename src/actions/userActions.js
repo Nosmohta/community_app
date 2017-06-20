@@ -12,6 +12,5 @@ export function loadUsers() {
 }
 
 export function loadUsersSuccess(users) {
-  console.log('from userActions ', users)
   return {type: 'LOAD_USERS_SUCCESS', payload: users};
 }
