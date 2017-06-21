@@ -13,11 +13,14 @@ import {loadTopics} from './actions/topicActions';
 const store = configureStore();
 
 
+
 store.dispatch(loadTopics());
+
 
 ReactDOM.render(
   <Provider store={store}>
-  <BrowserRouter><App/></BrowserRouter>
+    <BrowserRouter><App/></BrowserRouter>
   </Provider>,
-  document.getElementById('root'));
+  document.getElementById('root')
+);
 registerServiceWorker();

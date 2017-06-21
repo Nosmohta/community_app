@@ -5,6 +5,7 @@ import React, {Component} from 'react';
 import UserList from './UserList'
 
 
+
 class Users extends Component {
   componentWillReceiveProps(nextProps) {
 
@@ -32,4 +33,3 @@ function mapStateToProps(state, ownProps) {
   };
 }
 export default connect(mapStateToProps)(Users);
-//export default Users
