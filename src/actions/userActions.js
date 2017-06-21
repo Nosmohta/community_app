@@ -68,3 +68,51 @@ export function getAllUsers() {
       return error;
     });
 }
+
+export function attemptRegister(firstname, lastname, email, password) {
+
+  const data = querystring.stringify({
+    'firstname': firstname,
+    'lastname': lastname,
+    'email': email,
+    'password': password
+  })
+
+  const request = new Request('http://localhost:8080/register', {
+    method: 'POST',
+    headers: new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }),
+    body: data
+  });
+  fetch(request)
+    .then((response) => {
+      if(response.ok) {
+        response.json().then((data) => {
+          console.log("REg action success")
+          store.dispatch({
+            type: 'LOGIN_SUCCESS',
+            payload: {
+              logged_in: true,
+              message: '',
+              token: ""
+            }
+          })
+        })
+      } else {
+        response.json().then((data) => {
+          console.log("REg action fail")
+          store.dispatch({
+            type: 'LOGIN_FAIL',
+            payload: {
+              logged_in: false,
+              message: "",
+              token: ''
+            }
+          })
+        })
+      }
+    })
+    .catch( err => console.log(err));
+
+}

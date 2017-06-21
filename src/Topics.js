@@ -21,6 +21,7 @@ class Topics extends Component {
     Object.keys(this.props.topics).map((key) => {
        topics.push(this.props.topics[key])
     })
+
     return (
 
             <div className="container">

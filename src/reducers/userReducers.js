@@ -36,6 +36,12 @@ export default function userReducer(state = initialState, action) {
       }
       return state
 
+    case 'ATTEMPT_REGISTER':
+      console.log("Attempt Reg Switch")
+      console.log(action.payload.firstName, action.payload.lastName,action.payload.email, action.payload.password )
+      Actions.attemptRegister(action.payload.firstName, action.payload.lastName,action.payload.email, action.payload.password )
+      return state
+
 
     default:
       return state;
