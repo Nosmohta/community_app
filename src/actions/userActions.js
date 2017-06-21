@@ -1,4 +1,4 @@
-import {store} from './index.js';
+import store from '../index.js';
 import querystring from 'querystring';
 import UserApi from '../api/UserApi';
 
@@ -33,26 +33,26 @@ export function attemptLogin(email, password) {
       if(response.ok) {
         response.json().then((data) => {
           console.log("action success")
-          return {
+          store.dispatch({
             type: 'LOGIN_SUCCESS',
             payload: {
               logged_in: true,
               message: '',
               token: data.token
             }
-          }
+          })
         })
       } else {
         response.json().then((data) => {
           console.log("action fail")
-          return {
+          store.dispatch({
             type: 'LOGIN_FAIL',
             payload: {
               logged_in: false,
               message: data.message,
               token: ''
             }
-          }
+          })
         })
       }
     })

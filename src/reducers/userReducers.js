@@ -16,27 +16,20 @@ export default function userReducer(state = initialState, action) {
     case 'ATTEMPT_LOGIN':
       // set state to login pending
       Actions.attemptLogin(action.payload.email, action.payload.password)
-
-          state = {
-            ...state,
-            alert_message: "test"//response.message,
-            // logged_in:response.logged_in,
-            // token: response.token
-          }
-          return state
-
-
       return state
 
-    case 'LOGIN-SUCCESS':
+    case 'LOGIN_SUCCESS':
+      console.log("IN REDUCER... login success")
       state = {
         ...state,
+        pathname: '/topics',
         token: action.payload.token,
         logged_in: true
       }
       return state
 
-    case 'LOGIN-FAIL':
+    case 'LOGIN_FAIL':
+      console.log("IN REDUCER... login fail")
       state = {
         ...state,
         alert_message: action.payload.message

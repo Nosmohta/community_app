@@ -4,25 +4,31 @@ import Register from './Register.js';
 import Login from './Login.js';
 import Topics from './Topics.js';
 import Home from './Home.js';
-import { Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css';
 import 'bulma/css/bulma.css'
 import Users from './Users.js';
 
 
 class App extends Component {
+
+
  render() {
       return (
-        <div>
+        <Router>
            <Switch>
               <Route path='/home' component={Home}/>
-               <Route path='/topics' component={Topics}/>
-              <Route path='/login' component={Login}/>
+              <Route path='/topics' component={Topics}/>
               <Route path='/register' component={Register}/>
               <Route path='/users' component={Users}/>
+              <Route path='/login' component={Login}/>
+              <Route exact path="/login" render={() =>
+                 (logged_in ? ( <Redirect to="/topics"/>) : (<Login/>))}/>
+
             </Switch>
-        </div>
+        </Router>
       );
     }
   }
+
 export default App;
