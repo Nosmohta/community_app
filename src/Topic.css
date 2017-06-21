@@ -49,3 +49,7 @@ div span {
 div.content {
   padding-right: 20px;
 }
+
+.container {
+ background-color: white;
+}
