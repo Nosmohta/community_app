@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import 'bulma/css/bulma.css'
-import {Columns} from 'bulma-components'
+import {Columns} from 'bulma-components';
+import {connect} from 'react-redux';
 
 
 class Login extends Component {
@@ -12,23 +13,9 @@ class Login extends Component {
       email: '',
       password:''
     };
-
     this.handleEmail = this.handleEmail.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    console.log(this.state);
-    store.dispatch({
-      action: 'ATTEMPT_LOGIN',
-      payload: {
-        email: this.state.email,
-        password: this.state.password
-      }
-    })
-  }
 
   handleEmail(event) {
     this.setState({email: event.target.value});
@@ -40,7 +27,6 @@ class Login extends Component {
 
 
   render() {
-
     return (
       <Columns>
       <form className="register">
@@ -54,21 +40,36 @@ class Login extends Component {
           <input className="input"  value={this.state.password} onChange={this.handlePassword} type="password" placeholder="Password" ref="password"/>
         </p>
         <br></br>
-       <button className="button is-outlined is-large" type="submit" onClick={this.handleSubmit}>Login</button>
+       <button className="button is-outlined is-large" type="submit" onClick={(e) => this.props.attemptLogin(this.state.email, this.state.password, e)}>Login</button>
       </form>
       </Columns>
-      );
+    );
+  }
+};
+
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    email: "",
+
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return{
+    attemptLogin: (email, password, e) => {
+      e.preventDefault();
+      dispatch({
+        type: 'ATTEMPT_LOGIN',
+        payload: {
+          email: email,
+          password: password
+        }
+      })
     }
-}
+  }
+
+};
 
 
-export default Login;
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     actions: bindActionCreators(sessionActions, dispatch)
-//   };
-// }
-// export default connect(null, mapDispatchToProps)(Login);
-
-
+export default connect( mapStateToProps, mapDispatchToProps)(Login);

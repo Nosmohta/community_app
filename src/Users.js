@@ -4,9 +4,11 @@ import * as userActions from './actions/userActions';
 import React, {Component} from 'react';
 import UserList from './UserList'
 
+
+
 class Users extends Component {
-  componentDidMount() {
-  console.log('from users ', this.props)
+  componentWillReceiveProps(nextProps) {
+console.log('componentWillReceiveProps ', nextProps)
 }
 
 
@@ -25,10 +27,9 @@ return (
 }
 
 function mapStateToProps(state, ownProps) {
-
+  console.log('from users ', state.users);
   return {
     users: state.users
   };
-
 }
 export default connect(mapStateToProps)(Users);
