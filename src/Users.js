@@ -8,7 +8,7 @@ import UserList from './UserList'
 
 class Users extends Component {
   componentWillReceiveProps(nextProps) {
-console.log('componentWillReceiveProps ', nextProps)
+
 }
 
 
@@ -27,7 +27,7 @@ return (
 }
 
 function mapStateToProps(state, ownProps) {
-  console.log('from users ', state.users);
+
   return {
     users: state.users
   };

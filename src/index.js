@@ -7,9 +7,15 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App.js'
 import routes from './routes'
-import {loadUsers} from './actions/userActions';
+
+import {loadTopics} from './actions/topicActions';
 
 const store = configureStore();
+
+
+
+store.dispatch(loadTopics());
+
 
 ReactDOM.render(
   <Provider store={store}>
