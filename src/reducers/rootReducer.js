@@ -6,7 +6,6 @@ const rootReducer = combineReducers({
   // short hand property names
   user: user,
   topics: topics
-
 })
 
 export default rootReducer;

@@ -71,11 +71,12 @@ export function getAllUsers() {
 
 export function attemptRegister(firstname, lastname, email, password) {
 
+
   const data = querystring.stringify({
-    'firstname': firstname,
-    'lastname': lastname,
-    'email': email,
-    'password': password
+    'firstname': firstname.toLowerCase(),
+    'lastname': lastname.toLowerCase(),
+    'email': email.toLowerCase(),
+    'password': password.toLowerCase()
   })
 
   const request = new Request('http://localhost:8080/register', {
@@ -89,24 +90,24 @@ export function attemptRegister(firstname, lastname, email, password) {
     .then((response) => {
       if(response.ok) {
         response.json().then((data) => {
-          console.log("REg action success")
+          console.log("Reg action success")
           store.dispatch({
-            type: 'LOGIN_SUCCESS',
+            type: 'REGISTRATION_SUCCESS',
             payload: {
               logged_in: true,
-              message: '',
-              token: ""
+              message: data.message,
+              token: data.token
             }
           })
         })
       } else {
         response.json().then((data) => {
-          console.log("REg action fail")
+          console.log("Reg action fail")
           store.dispatch({
-            type: 'LOGIN_FAIL',
+            type: 'REGISTRATION_FAIL',
             payload: {
               logged_in: false,
-              message: "",
+              message: data.message,
               token: ''
             }
           })

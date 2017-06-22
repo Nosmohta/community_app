@@ -22,7 +22,6 @@ export default function userReducer(state = initialState, action) {
       console.log("IN REDUCER... login success")
       state = {
         ...state,
-        pathname: '/topics',
         token: action.payload.token,
         logged_in: true
       }
@@ -37,10 +36,21 @@ export default function userReducer(state = initialState, action) {
       return state
 
     case 'ATTEMPT_REGISTER':
-      console.log("Attempt Reg Switch")
-      console.log(action.payload.firstName, action.payload.lastName,action.payload.email, action.payload.password )
       Actions.attemptRegister(action.payload.firstName, action.payload.lastName,action.payload.email, action.payload.password )
       return state
+
+    case 'REGISTRATION_SUCCESS':
+      console.log(action.payload.message)
+      return Object.assign({}, state,
+        action.payload
+      )
+
+    case 'REGISTRATION_FAIL':
+      console.log(action.payload.message)
+      return Object.assign({}, state,
+        action.payload
+      )
+
 
 
     default:

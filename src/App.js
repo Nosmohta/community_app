@@ -19,8 +19,8 @@ class App extends Component {
          <Switch>
             <Route path='/home' component={Home}/>
             <Route path='/topics' component={Topics}/>
-            <Route path='/register' component={Register}/>
-            <Route path='/users' component={Users}/>
+            <Route path='/register' render={() =>
+              (this.props.logged_in ? ( <Redirect to="/topics"/>) : (<Register/>))}/>
             <Route exact path="/login" render={() =>
                (this.props.logged_in ? ( <Redirect to="/topics"/>) : (<Login/>))}/>
          </Switch>
