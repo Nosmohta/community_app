@@ -39,11 +39,20 @@ div.topics-canvas {
   border-top: 50px solid red;
 }
 
-div span {
+div.triangle-up span {
   position: absolute;
   top: 15px;
   right: -10px;
   margin: auto;
+  color: #0fff0f;
+}
+
+div.triangle-down span {
+  position: absolute;
+  top: -40px;
+  right: -8px;
+  margin: auto;
+  color: #ff6262;
 }
 
 div.content {

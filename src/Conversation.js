@@ -43,6 +43,7 @@ class Conversation extends Component {
     }
 
     return (
+
       <div className="previewComponent">
         <form onSubmit={(e)=>this._handleSubmit(e)}>
           <input className="fileInput"
@@ -55,6 +56,17 @@ class Conversation extends Component {
         <div className="imgPreview">
           {$imagePreview}
         </div>
+         <form className="conversation">
+          <p className="control">
+            <input className="input"  type="text" placeholder="Hi :) what's your topic?" ref="first-question"/>
+          </p>
+          <br></br>
+          <p className="control">
+            <input className="input"   type="text" placeholder="Describe your topic for us." ref="lastname"/>
+          </p>
+          <br></br>
+          <button className="button is-outlined is-large" type="submit">Post to Community!</button>
+          </form>
       </div>
     )
   }
