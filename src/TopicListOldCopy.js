@@ -4,13 +4,12 @@ import 'bulma/css/bulma.css'
 import './Topic.css';
 import Conversation from './Conversation.js';
 import {Columns} from 'bulma-components'
+import Topic from './Topic.js'
 
-
-class Topics extends Component {
+class TopicsList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-                  topics: [],
                   id: ''
                 };
      this.handleDownVote = this.handleDownVote.bind(this);
@@ -35,6 +34,10 @@ class Topics extends Component {
     Object.keys(this.props.topics).map((key) => {
        topics.push(this.props.topics[key])
     })
+    const token = this.props.user.token
+    const up = true
+     const down = true
+
 
     return (
 
@@ -56,8 +59,8 @@ class Topics extends Component {
                 {a.description}
                 <br></br>
                 <small>11:09 PM - 1 Jan 2016</small>
-                 <div  onClick={(e) => this.props.attemptUpVote(a._id)} className="triangle-up"><span>{a.up_votes}</span></div>
-              <div  onClick={this.handleDownVote} className="triangle-down"><span>{a.down_votes}</span></div>
+                 <div  onClick={(e) => this.props.attemptVote(a._id, token)} className="triangle-up"><span>{a.up_votes}</span></div>
+              <div  onClick={ (e) => this.props.attemptVote(a._id, token)} className="triangle-down"><span>{a.down_votes}</span></div>
               </div>
             </div>
 
@@ -72,23 +75,30 @@ class Topics extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('from Topics component ', state.topics)
-    return { topics: state.topics };
+  console.log('from Topics component ', state.user)
+    return {
+      topics: state.topics,
+      user: state.user
+    };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return{
-    attemptUpVote: (id) => {
+    attemptVote: (id, token, down, up) => {
+      console.log(up)
       dispatch({
         type: 'ATTEMPT_UP_VOTE',
         payload: {
-          topic_id: id
+          _id: id,
+          token: token,
+          up_vote: true
         }
       })
     }
   }
 
+
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Topics);
+export default connect(mapStateToProps, mapDispatchToProps)(TopicsList);
