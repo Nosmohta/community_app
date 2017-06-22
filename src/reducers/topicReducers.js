@@ -1,4 +1,5 @@
 import initialState from './initialState';
+import * as Actions from '../actions/topicActions'
 
 
 export default function topicReducer(state = initialState.topics, action) {
@@ -9,6 +10,9 @@ export default function topicReducer(state = initialState.topics, action) {
       return Object.assign({}, state,
         action.payload
       )
+      case 'ATTEMPT_UP_VOTE':
+      console.log('from attempt upvote', action.payload)
+      return state
        default:
       return state;
   }

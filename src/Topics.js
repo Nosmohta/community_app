@@ -5,10 +5,24 @@ import './Topic.css';
 import Conversation from './Conversation.js';
 import {Columns} from 'bulma-components'
 
+
 class Topics extends Component {
   constructor(props) {
     super(props);
-    this.state = { topics: [] };
+    this.state = {
+                  topics: [],
+                  id: ''
+                };
+     this.handleDownVote = this.handleDownVote.bind(this);
+  }
+
+
+  handleUpVote (e) {
+    console.log(e.target.class)
+  }
+
+  handleDownVote (e) {
+    console.log(this.state)
   }
 
 
@@ -43,8 +57,8 @@ class Topics extends Component {
                 {a.description}
                 <br></br>
                 <small>11:09 PM - 1 Jan 2016</small>
-                 <div className="triangle-up"><span>56</span></div>
-              <div className="triangle-down"></div>
+                 <div  onClick={(e) => this.props.attemptUpVote(a._id)} className="triangle-up"><span>{a.up_votes}</span></div>
+              <div  onClick={this.handleDownVote} className="triangle-down"><span>{a.down_votes}</span></div>
               </div>
             </div>
 
@@ -58,8 +72,24 @@ class Topics extends Component {
 
 }
 
-function mapStateToProps(state, ownProps) {
+const mapStateToProps = (state, ownProps) => {
   console.log('from Topics component ', state.topics)
     return { topics: state.topics };
 }
-export default connect(mapStateToProps)(Topics);
+
+const mapDispatchToProps = (dispatch) => {
+  return{
+    attemptUpVote: (id) => {
+      dispatch({
+        type: 'ATTEMPT_UP_VOTE',
+        payload: {
+          topic_id: id
+        }
+      })
+    }
+  }
+
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Topics);
