@@ -26,6 +26,7 @@ class Topics extends Component {
 
             <div className="container">
             <Conversation/>
+
             {topics.map((a) => {
               return (
             <div className="column topics-canvas">
