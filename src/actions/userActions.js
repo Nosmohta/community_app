@@ -1,6 +1,7 @@
 import store from '../index.js';
 import querystring from 'querystring';
 import UserApi from '../api/UserApi';
+import * as Actions from '../actions/userActions'
 
 export function loadUsers() {
   return function(dispatch) {

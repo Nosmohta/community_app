@@ -44,10 +44,27 @@ h3 {
 }
   .submitButton:hover {
     background: #efefef;
-
   }
 
 .centerText {
   text-align: center;
   width: 500px;
+}
+
+.input {
+  background-color: #557EBF;
+  width: 90%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 2px solid white;
+  font-size: 20px;
+}
+
+form.conversation {
+  background-color: grey;
 }
