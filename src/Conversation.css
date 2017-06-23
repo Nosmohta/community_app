@@ -2,6 +2,12 @@ h3 {
   margin-left: 15px;
 }
 
+.question {
+  display: inline-block;
+  width: 240px;
+  text-align: right;
+}​
+
 .fileInput {
   border-bottom: 4px solid lightgray;
   border-right: 4px solid lightgray;
@@ -68,3 +74,11 @@ h3 {
 form.conversation {
   background-color: grey;
 }
+
+div.conversation {
+  background-color: #D3D3D3;
+  height: 100%;
+  margin: 0px 100px 0px 100px;
+}
+
+

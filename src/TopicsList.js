@@ -5,24 +5,28 @@ import './Topic.css';
 import Conversation from './Conversation.js';
 import {Columns} from 'bulma-components'
 import Topic from './Topic.js'
+import configureStore from './store/configStore';
+import {loadTopics} from './actions/topicActions';
+
+
+
+
 
 class TopicsList extends Component {
+
+  componentDidMount () {
+    const token = this.props.user.token
+    this.props.dispatch(loadTopics(token))
+  }
+
   constructor(props) {
     super(props);
     this.state = {
                   id: ''
                 };
-     this.handleDownVote = this.handleDownVote.bind(this);
+
   }
 
-
-  handleUpVote (e) {
-    console.log(e.target.class)
-  }
-
-  handleDownVote (e) {
-    console.log(this.state)
-  }
 
 
   componentWillReceiveProps(nextProps) {
@@ -34,7 +38,6 @@ class TopicsList extends Component {
     Object.keys(this.props.topics).map((key) => {
        topics.push(this.props.topics[key])
     })
-    const token = this.props.user.token
 
 
 
@@ -53,14 +56,17 @@ class TopicsList extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('from Topics component ', state.user)
+  console.log('from TopicList component ', state.topics)
     return {
       topics: state.topics,
       user: state.user
     };
 }
 
+const mapDispatchToProps = (dispatch) => {
 
+
+};
 
 
 export default connect(mapStateToProps)(TopicsList);

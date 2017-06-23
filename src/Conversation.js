@@ -8,9 +8,18 @@ import {Columns} from 'bulma-components'
 class Conversation extends Component {
   constructor(props) {
     super(props);
-    this.state = {file: '',imagePreviewUrl: ''};
+    this.state = {
+      file: '',
+      imagePreviewUrl: '',
+      first_answer: false
+    };
+
   }
 
+
+   handleFirstQuestion(e) {
+    this.setState({first_answer: true})
+   }
   _handleSubmit(e) {
     e.preventDefault();
     // TODO: do something with -> this.state.file
@@ -35,17 +44,31 @@ class Conversation extends Component {
 
   render() {
     let {imagePreviewUrl} = this.state;
-    let $imagePreview = null;
+    let imagePreview = null;
     if (imagePreviewUrl) {
-      $imagePreview = (<img src={imagePreviewUrl} />);
+      imagePreview = (<img src={imagePreviewUrl} />);
     } else {
-      $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
+      imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
     }
 
     return (
 
-      <div className="previewComponent">
-        <form onSubmit={(e)=>this._handleSubmit(e)}>
+
+         <div className="conversation">
+
+          <p className="control first-question">
+          <label className="question">Hi :) what's your topic?</label>
+            <input className="conversation-input"  type="text" placeholder="Hi :) what's your topic?" ref="first-question"/>
+              <a className="button" onClick={this.handleFirstQuestion}>Create Topic</a>
+          </p>
+          <br></br>
+          <p className="control second-question">
+           <label className="question">Describe your topic for us.</label>
+            <input className="converssation-input"   type="text" placeholder="Describe your topic for us." ref="lastname"/>
+          </p>
+          <br></br>
+
+           <form onSubmit={(e)=>this._handleSubmit(e)}>
           <input className="fileInput"
             type="file"
             onChange={(e)=>this._handleImageChange(e)} />
@@ -54,19 +77,10 @@ class Conversation extends Component {
             onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
         </form>
         <div className="imgPreview">
-          {$imagePreview}
+          {imagePreview}
         </div>
-         <form className="conversation">
-          <p className="control">
-            <input className="conversation-input"  type="text" placeholder="Hi :) what's your topic?" ref="first-question"/>
-          </p>
-          <br></br>
-          <p className="control">
-            <input className="converssation-input"   type="text" placeholder="Describe your topic for us." ref="lastname"/>
-          </p>
-          <br></br>
-          <button className="button is-outlined is-large" type="submit">Post to Community!</button>
-          </form>
+        <button className="button is-outlined is-large" type="submit">Post to Community!</button>
+
       </div>
     )
   }

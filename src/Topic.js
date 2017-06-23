@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import UpVote from './UpVote.js'
 
+
 class Topic extends Component {
 
 
