@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Header from './Header.js';
 import Register from './Register.js';
 import Login from './Login.js';
-import Topics from './Topics.js';
+import Topics from './TopicsList.js';
 import Home from './Home.js';
 import { BrowserRouter as Router, Switch, Route, Redirect  } from 'react-router-dom'
 import './App.css';

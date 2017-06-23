@@ -20,8 +20,6 @@ form.register {
   border-radius: 40px;
   opacity: 0.8;
   margin-top: 5%;
-  position: relative;
-  top: 100px;
 }
 
 form:hover {
@@ -70,6 +68,8 @@ opacity: .95;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  height:200px;
+  width:200px;
 }
 
 p.home-form {

@@ -6,14 +6,20 @@ export default function topicReducer(state = initialState.topics, action) {
 
   switch(action.type) {
     case 'LOAD_TOPICS_SUCCESS':
-    console.log('from load topics', action.payload)
+      console.log('from load topics', action.payload)
       return Object.assign({}, state,
         action.payload
       )
-      case 'ATTEMPT_UP_VOTE':
+    case 'ATTEMPT_UP_VOTE':
       console.log('from attempt upvote', action.payload)
+      Actions.attemptUpVote(action.payload._id, action.payload.token)
       return state
-       default:
+    case 'UP_VOTE_SUCCESS':
+      return state
+    case 'UP_VOTE_FAIL':
+      console.log('up vote failed')
+      return state
+    default:
       return state;
   }
 }
