@@ -13,12 +13,13 @@ class Conversation extends Component {
       imagePreviewUrl: '',
       first_answer: false
     };
-
+this.handleFirstQuestion = this.handleFirstQuestion.bind(this)
   }
 
 
    handleFirstQuestion(e) {
     this.setState({first_answer: true})
+    console.log(this.state)
    }
   _handleSubmit(e) {
     e.preventDefault();
@@ -51,16 +52,14 @@ class Conversation extends Component {
       imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
     }
 
+
+    if (this.state.first_answer) {
     return (
 
 
          <div className="conversation">
 
-          <p className="control first-question">
-          <label className="question">Hi :) what's your topic?</label>
-            <input className="conversation-input"  type="text" placeholder="Hi :) what's your topic?" ref="first-question"/>
-              <a className="button" onClick={this.handleFirstQuestion}>Create Topic</a>
-          </p>
+
           <br></br>
           <p className="control second-question">
            <label className="question">Describe your topic for us.</label>
@@ -83,6 +82,13 @@ class Conversation extends Component {
 
       </div>
     )
+    } else {
+      return (<div><p className="control first-question">
+          <label className="question">Hi :) what's your topic?</label>
+            <input className="conversation-input"  type="text" placeholder="Hi :) what's your topic?" ref="first-question"/>
+              <a className="button" onClick={this.handleFirstQuestion}>Create Topic</a>
+          </p></div>)
+    }
   }
 }
 

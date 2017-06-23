@@ -3,20 +3,15 @@ import store from '../index.js';
 import querystring from 'querystring';
 
 
-export function loadTopics() {
-  return function(dispatch) {
-    return TopicApi.getAllTopics().then(topics => {
-      dispatch(loadTopicsSuccess(topics));
-    }).catch(error => {
-      throw(error);
-    });
-  };
-}
-
-export function loadTopicsSuccess(topics) {
-  console.log('from topicActions ', topics)
-  return {type: 'LOAD_TOPICS_SUCCESS', payload: topics};
-}
+// export function loadTopics() {
+//   return function(dispatch) {
+//     return TopicApi.getAllTopics().then(topics => {
+//       dispatch(loadTopicsSuccess(topics));
+//     }).catch(error => {
+//       throw(error);
+//     });
+//   };
+// }
 
 export function attemptUpVote(id, token) {
   //need to confirm this is the correct data that must be sent for the api request
@@ -57,25 +52,25 @@ export function attemptUpVote(id, token) {
     .catch( err => console.log(err));
 }
 
-export function load(token) {
+export function loadTopics(token) {
 
-
-  const request = new Request('http://localhost:8080/topics', {
+  const data = querystring.stringify({'token': token })
+  const request = new Request('http://localhost:8080/api/topics', {
     method: 'POST',
     headers: new Headers({
       'Content-Type': 'application/x-www-form-urlencoded'
     }),
-    body: token
+    body: data
   });
   fetch(request)
     .then((response) => {
       if(response.ok) {
         response.json().then((data) => {
-          console.log("Reg action success")
+          console.log("topic action success", data)
           store.dispatch({
             type: 'LOAD_TOPICS_SUCCESS',
             payload: {
-              data
+              topics: data.topics
             }
           })
         })
@@ -84,11 +79,7 @@ export function load(token) {
           console.log("Reg action fail")
           store.dispatch({
             type: 'LOAD_TOPICS_FAIL',
-            payload: {
-
-              message: data.message,
-
-            }
+            payload: []
           })
         })
       }

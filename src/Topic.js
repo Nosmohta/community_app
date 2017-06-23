@@ -22,7 +22,7 @@ class Topic extends Component {
                  {this.props.topic.description}
                 <br></br>
                 <small>{this.props.topic.date_created}</small>
-                <UpVote voteCount={this.props.topic.up_votes} />
+                <UpVote topic={this.props.topic} voteCount={this.props.topic.up_votes} />
               <div  className="triangle-down"><span></span></div>
               </div>
             </div>
