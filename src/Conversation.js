@@ -38,7 +38,7 @@ this.handleFirstQuestion = this.handleFirstQuestion.bind(this)
         file: file,
         imagePreviewUrl: reader.result
       });
-    }
+    };
 
     reader.readAsDataURL(file)
   }
@@ -56,9 +56,7 @@ this.handleFirstQuestion = this.handleFirstQuestion.bind(this)
     if (this.state.first_answer) {
     return (
 
-
          <div className="conversation">
-
 
           <br></br>
           <p className="control second-question">

@@ -3,19 +3,9 @@ import store from '../index.js';
 import querystring from 'querystring';
 
 
-// export function loadTopics() {
-//   return function(dispatch) {
-//     return TopicApi.getAllTopics().then(topics => {
-//       dispatch(loadTopicsSuccess(topics));
-//     }).catch(error => {
-//       throw(error);
-//     });
-//   };
-// }
-
-export function attemptUpVote(id, token) {
+export function attemptUpVote(topic_id, token) {
   //need to confirm this is the correct data that must be sent for the api request
-  const data = querystring.stringify({'_id': id, 'token': token, 'up_vote': true })
+  const data = querystring.stringify({'_id': topic_id, 'token': token, 'up_vote': true })
   const request = new Request('http://localhost:8080/api/vote', {
     method: 'POST',
     headers: new Headers({

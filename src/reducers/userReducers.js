@@ -9,7 +9,7 @@ export default function userReducer(state = initialState, action) {
 
   switch(action.type) {
     case 'LOAD_USERS_SUCCESS':
-      console.log('from load users', action.payload)
+      console.log('from load users', action.payload);
       return Object.assign({}, state,
         action.payload
       )
