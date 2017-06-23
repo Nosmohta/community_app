@@ -51,7 +51,6 @@ class Login extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     email: "",
-
   };
 };
 

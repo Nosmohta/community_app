@@ -20,20 +20,18 @@ export default function userReducer(state = initialState, action) {
 
     case 'LOGIN_SUCCESS':
       console.log("IN REDUCER... login success")
-      state = {
+      return {
         ...state,
         token: action.payload.token,
         logged_in: true
       }
-      return state
 
     case 'LOGIN_FAIL':
       console.log("IN REDUCER... login fail")
-      state = {
+      return {
         ...state,
         alert_message: action.payload.message
       }
-      return state
 
     case 'ATTEMPT_REGISTER':
       Actions.attemptRegister(action.payload.firstName, action.payload.lastName,action.payload.email, action.payload.password )
