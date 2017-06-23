@@ -5,7 +5,7 @@ import querystring from 'querystring';
 
 export function attemptUpVote(topic_id, token) {
   const data = querystring.stringify({'topic_id': topic_id, 'token': token, 'vote_up': true, 'vote_down': false});
-  const request = new Request('http://localhost:8080/api/vote', {
+  const request = new Request('http://localhost:8080/api/topics/' + topic_id  +'/vote', {
     method: 'POST',
     headers: new Headers({
       'Content-Type': 'application/x-www-form-urlencoded'
@@ -43,7 +43,7 @@ export function attemptUpVote(topic_id, token) {
 
 export function attemptDownVote(topic_id, token) {
   const data = querystring.stringify({'topic_id': topic_id, 'token': token, 'vote_up': false, 'vote_down': true })
-  const request = new Request('http://localhost:8080/api/vote', {
+  const request = new Request('http://localhost:8080/api/topics/' + topic_id  +'/vote', {
     method: 'POST',
     headers: new Headers({
       'Content-Type': 'application/x-www-form-urlencoded'
