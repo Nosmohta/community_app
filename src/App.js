@@ -8,7 +8,6 @@ import Home from './Home.js';
 import { BrowserRouter as Router, Switch, Route, Redirect  } from 'react-router-dom'
 import './App.css';
 import 'bulma/css/bulma.css'
-import Users from './Users.js';
 
 
 class App extends Component {
