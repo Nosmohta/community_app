@@ -102,3 +102,5 @@ const mapDispatchToProps = (dispatch) => {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopicsList);
+
+      // {this.props.topics.topics.map((topic) => <Topic topic={topic} key={topic._id} />)}

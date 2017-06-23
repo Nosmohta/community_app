@@ -3,8 +3,8 @@ import React, {Component} from 'react';
 import 'bulma/css/bulma.css'
 import './Topic.css';
 import Conversation from './Conversation.js';
-import {Columns} from 'bulma-components'
-import Topic from './Topic.js'
+import {Columns} from 'bulma-components';
+import Topic from './Topic.js';
 import configureStore from './store/configStore';
 import {loadTopics} from './actions/topicActions';
 
@@ -15,8 +15,8 @@ import {loadTopics} from './actions/topicActions';
 class TopicsList extends Component {
 
   componentDidMount () {
-    const token = this.props.user.token
-    this.props.dispatch(loadTopics(token))
+    const token = this.props.user.token;
+    loadTopics(token);
   }
 
   constructor(props) {
@@ -29,28 +29,34 @@ class TopicsList extends Component {
 
 
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({topics: nextProps.topics});
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   this.setState({topics: nextProps.topics});
+  // }
 
   render() {
-    const topics = []
-    Object.keys(this.props.topics).map((key) => {
-       topics.push(this.props.topics[key])
-    })
+    // const topics = []
+    // Object.keys(this.props.topics).map((key) => {
+    //    topics.push(this.props.topics[key])
+    // })
 
-
-
-    return (
+    console.log(this.props.topics)
+    const topics = this.props.topics.topics
+     if (topics) {
+         return (
             <div>
               <div className="container">
               <Conversation/>
               <div className="column topics-canvas">
-               {topics.map((topic) => <Topic topic={topic} key={topic._id} />)}
+               {this.props.topics.topics.map((topic) => <Topic topic={topic} key={topic._id} />)}
               </div>
               </div>
             </div>
           )
+        } else {
+          return (
+            <div><p></p></div>
+            )
+        }
   }
 
 }
@@ -63,10 +69,10 @@ const mapStateToProps = (state, ownProps) => {
     };
 }
 
-const mapDispatchToProps = (dispatch) => {
+// const mapDispatchToProps = (dispatch) => {
 
 
-};
+// };
 
 
-export default connect(mapStateToProps)(TopicsList);
+export default connect(mapStateToProps, null)(TopicsList);

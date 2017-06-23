@@ -8,7 +8,7 @@ export default function topicReducer(state = initialState.topics, action) {
     case 'LOAD_TOPICS_SUCCESS':
       console.log('from load topics', action.payload)
       return Object.assign({}, state,
-        action.payload
+        {topics: action.payload.topics}
       )
     case 'ATTEMPT_UP_VOTE':
       console.log('from attempt upvote', action.payload)

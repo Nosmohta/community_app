@@ -8,7 +8,8 @@ class UpVote extends Component {
   render () {
 
     const token = this.props.user.token
-    const id = this.props._id
+    const id = this.props.topic._id
+    console.log(this.props.topic)
 
     return (
 
@@ -22,7 +23,7 @@ class UpVote extends Component {
 const mapStateToProps = (state, ownProps) => {
 
     return {
-      topics: state.topics,
+      //topics: state.topics,
       user: state.user
     };
 }

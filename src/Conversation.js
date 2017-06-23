@@ -13,12 +13,13 @@ class Conversation extends Component {
       imagePreviewUrl: '',
       first_answer: false
     };
-
+this.handleFirstQuestion = this.handleFirstQuestion.bind(this)
   }
 
 
    handleFirstQuestion(e) {
     this.setState({first_answer: true})
+    console.log(this.state)
    }
   _handleSubmit(e) {
     e.preventDefault();
