@@ -7,13 +7,9 @@ import {Columns} from 'bulma-components';
 import Topic from './Topic.js';
 import configureStore from './store/configStore';
 import {loadTopics} from './actions/topicActions';
-
-
-
-
+import {Link} from 'react-router-dom'
 
 class TopicsList extends Component {
-
   componentDidMount () {
     const token = this.props.user.token;
     loadTopics(token);
@@ -21,23 +17,10 @@ class TopicsList extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-                  id: ''
-                };
-
+    this.state = {id: ''};
   }
 
-
-
-  // componentWillReceiveProps(nextProps) {
-  //   this.setState({topics: nextProps.topics});
-  // }
-
   render() {
-    // const topics = []
-    // Object.keys(this.props.topics).map((key) => {
-    //    topics.push(this.props.topics[key])
-    // })
 
     console.log(this.props.topics)
     const topics = this.props.topics.topics
@@ -54,7 +37,7 @@ class TopicsList extends Component {
           )
         } else {
           return (
-            <div><p></p></div>
+            <div><Link to="/login">Login</Link></div>
             )
         }
   }

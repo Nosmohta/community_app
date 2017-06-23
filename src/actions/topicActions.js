@@ -3,19 +3,8 @@ import store from '../index.js';
 import querystring from 'querystring';
 
 
-// export function loadTopics() {
-//   return function(dispatch) {
-//     return TopicApi.getAllTopics().then(topics => {
-//       dispatch(loadTopicsSuccess(topics));
-//     }).catch(error => {
-//       throw(error);
-//     });
-//   };
-// }
-
-export function attemptUpVote(id, token) {
-  //need to confirm this is the correct data that must be sent for the api request
-  const data = querystring.stringify({'_id': id, 'token': token, 'up_vote': true })
+export function attemptUpVote(topic_id, token) {
+  const data = querystring.stringify({'topic_id': topic_id, 'token': token, 'vote_up': true, 'vote_down': false})
   const request = new Request('http://localhost:8080/api/vote', {
     method: 'POST',
     headers: new Headers({
@@ -32,7 +21,7 @@ export function attemptUpVote(id, token) {
             type: 'UP_VOTE_SUCCESS',
             payload: {
               //just a placeholder for payload now....will update when api route is finalized
-              up_voted: true,
+              data
             }
           })
         })
@@ -42,6 +31,44 @@ export function attemptUpVote(id, token) {
           console.log("up vote fail")
           store.dispatch({
             type: 'UP_VOTE_FAIL',
+            payload: {
+              message: data.message,
+            }
+          })
+        })
+      }
+    })
+    .catch( err => console.log(err));
+}
+
+export function attemptDownVote(topic_id, token) {
+  const data = querystring.stringify({'topic_id': topic_id, 'token': token, 'vote_up': false, 'vote_down': true })
+  const request = new Request('http://localhost:8080/api/vote', {
+    method: 'POST',
+    headers: new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }),
+    body: data
+  });
+  fetch(request)
+    .then((response) => {
+      if(response.ok) {
+        response.json().then((data) => {
+          console.log("down vote success")
+          store.dispatch({
+            type: 'DOWN_VOTE_SUCCESS',
+            payload: {
+              //just a placeholder for payload now....will update when api route is finalized
+              data
+            }
+          })
+        })
+      } else {
+        console.log(response)
+        response.json().then((data) => {
+          console.log("down vote fail")
+          store.dispatch({
+            type: 'DOWN_VOTE_FAIL',
             payload: {
               message: data.message,
             }

@@ -56,38 +56,34 @@ this.handleFirstQuestion = this.handleFirstQuestion.bind(this)
     if (this.state.first_answer) {
     return (
 
-
          <div className="conversation">
-
 
           <br></br>
           <p className="control second-question">
-           <label className="question">Describe your topic for us.</label>
+            <label className="question">Describe your topic for us.</label>
             <input className="converssation-input"   type="text" placeholder="Describe your topic for us." ref="lastname"/>
           </p>
           <br></br>
 
-           <form onSubmit={(e)=>this._handleSubmit(e)}>
-          <input className="fileInput"
-            type="file"
-            onChange={(e)=>this._handleImageChange(e)} />
-          <button className="submitButton"
-            type="submit"
-            onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
-        </form>
-        <div className="imgPreview">
-          {imagePreview}
-        </div>
-        <button className="button is-outlined is-large" type="submit">Post to Community!</button>
+          <form onSubmit={(e)=>this._handleSubmit(e)}>
+          <input className="fileInput"type="file" onChange={(e)=>this._handleImageChange(e)} />
+          <button className="submitButton" type="submit" onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
+          </form>
+          <div className="imgPreview">
+            {imagePreview}
+          </div>
+          <button className="button is-outlined is-large" type="submit">Post to Community!</button>
 
-      </div>
+          </div>
     )
     } else {
-      return (<div><p className="control first-question">
+      return (<div>
+        <p className="control first-question">
           <label className="question">Hi :) what's your topic?</label>
             <input className="conversation-input"  type="text" placeholder="Hi :) what's your topic?" ref="first-question"/>
-              <a className="button" onClick={this.handleFirstQuestion}>Create Topic</a>
-          </p></div>)
+              <a className="question-button" onClick={this.handleFirstQuestion}>Create Topic</a>
+          </p>
+          </div>)
     }
   }
 }

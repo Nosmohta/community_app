@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import UpVote from './UpVote.js'
-
+import DownVote from './DownVote.js'
 
 class Topic extends Component {
 
@@ -23,7 +23,7 @@ class Topic extends Component {
                 <br></br>
                 <small>{this.props.topic.date_created}</small>
                 <UpVote topic={this.props.topic} voteCount={this.props.topic.up_votes} />
-              <div  className="triangle-down"><span></span></div>
+              <DownVote topic={this.props.topic} voteCount={this.props.topic.down_votes} />
               </div>
             </div>
 

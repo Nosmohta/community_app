@@ -48,18 +48,19 @@ h3 {
   font-size: 10pt;
   cursor: pointer;
 }
-  .submitButton:hover {
-    background: #efefef;
-  }
+
+.submitButton:hover {
+  background: #efefef;
+}
 
 .centerText {
   text-align: center;
   width: 500px;
 }
 
-.input {
+.conversation-input {
   background-color: #557EBF;
-  width: 90%;
+  width: 300px;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -67,7 +68,7 @@ h3 {
   border: 0;
   outline: 0;
   background: transparent;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid black;
   font-size: 20px;
 }
 
@@ -81,4 +82,11 @@ div.conversation {
   margin: 0px 100px 0px 100px;
 }
 
+label.question {
+  text-align: center;
 
+}
+
+.question-button {
+  float: right;
+}

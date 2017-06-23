@@ -10,7 +10,7 @@ import routes from './routes'
 import {loadTopics} from './actions/topicActions';
 
 const store = configureStore();
-// store.dispatch(loadTopics());
+
 
 ReactDOM.render(
   <Provider store={store}>
