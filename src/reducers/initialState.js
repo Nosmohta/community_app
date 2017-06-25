@@ -3,5 +3,6 @@ export default {
   topics: [],
   alert_message: '',
   logged_in: false,
-  token:''
+  token:'',
+  votes: []
 }
