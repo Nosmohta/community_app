@@ -81,14 +81,21 @@ export function attemptDownVote(topic_id, token) {
 
 export function loadTopics(token) {
 
-  const data = querystring.stringify({'token': token })
+  const data = querystring.stringify({'token': token });
+
+  let auth = 'JWT ' + token;
+
   const request = new Request('http://localhost:8080/api/topics', {
     method: 'POST',
+
     headers: new Headers({
       'Content-Type': 'application/x-www-form-urlencoded'
-    }),
-    body: data
+     }),
+    'body': data
   });
+
+
+
   fetch(request)
     .then((response) => {
       if(response.ok) {
