@@ -4,7 +4,12 @@ import 'bulma/css/bulma.css'
 import {Columns} from 'bulma-components'
 import './UploadPhoto.css';
 import {attemptUpload} from '../actions/conversationActions';
+import request from 'superagent';
+import cloudinary from 'cloudinary';
+import $ from "jquery";
 
+const CLOUDINARY_UPLOAD_PRESET = 'lxgfr9q6';
+const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/lyvtg7cjl/image/upload';
 
 class UploadPhoto extends Component {
   constructor(props) {
@@ -17,28 +22,46 @@ class UploadPhoto extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // TODO: do something with -> this.state.file
-    console.log('handle uploading-', this.state.file);
-    const token = this.props.user.token
-    const img = this.state.file
-    attemptUpload(img, token)
+    this.handleImageUpload(this.state.file)
   }
+
+//upload photo to cloudinary and get the url
+  handleImageUpload(file) {
+    let upload = request.post(CLOUDINARY_UPLOAD_URL)
+                     .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+                     .field('file', file);
+
+    upload.end((err, response) => {
+      if (err) {
+        console.error(err);
+      }
+
+      if (response.body.secure_url !== '') {
+        console.log(response.body.secure_url)
+        //call function that sends image to server with image url and token as arguments
+        const token = this.props.user.token
+        attemptUpload(response.body.secure_url, token)
+        this.setState({
+        uploadedFileCloudinaryUrl: response.body.secure_url
+        });
+      }
+    });
+  }
+
 
   handleImageChange(e) {
     e.preventDefault();
-
     let reader = new FileReader();
     let file = e.target.files[0];
-
     reader.onloadend = () => {
       this.setState({
         file: file,
         imagePreviewUrl: reader.result
       });
     }
-
     reader.readAsDataURL(file)
   }
+
 
   render() {
     console.log(this.props)

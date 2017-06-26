@@ -4,15 +4,17 @@ const crypto = require("crypto");
 
 //function called from UploadPhoto component
 export function attemptUpload(img, token) {
-  console.log('attempt upload ', img + token)
-  const data = querystring.stringify({'token': token, 'IMG': img });
+  const data = querystring.stringify({'token': token, 'img': img });
+  const file = img
+  console.log('attempt upload ', data)
   const conversation_id = crypto.randomBytes(5).toString('hex');
-  const request = new Request('http://localhost:8080/api/conversations/' + conversation_id + '/photo', {
+  const request = new Request('http://localhost:8080/upload/conversations/' + conversation_id + '/photo', {
     method: 'POST',
     headers: new Headers({
       'Content-Type': 'application/x-www-form-urlencoded'
     }),
-    body: data
+    body: data,
+    file: file
   });
   fetch(request)
     .then((response) => {

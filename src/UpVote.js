@@ -38,14 +38,22 @@ class UpVote extends Component {
     const token = this.props.user.token
     const arrowId = `up${messageClass}`
 
+
+
     $(function() {
     $( `.${messageClass}` ).hide();
     });
 
+    // if (this.props.votes.messageClass && up_vote === true)
+    //   <div>
+    //     <i className="fa fa-arrow-up fa-2x" id={arrowId} aria-hidden="true" onMouseDown={(e) => this.props.attemptCancelVote(this.props.topic._id, token)} onMouseUp={this.handleUpVote}>
+    //     </i><span className="upvoteCount">+{this.state.upVotes}</span>
+    //     </div>
+
     return (
         <div>
         <i className="fa fa-arrow-up fa-2x" id={arrowId} aria-hidden="true" onMouseDown={(e) => this.props.attemptUpVote(this.props.topic._id, token)} onMouseUp={this.handleUpVote}>
-        </i><span className="upvoteCount">- {this.state.upVotes}</span>
+        </i><span className="upvoteCount">+{this.state.upVotes}</span>
         </div>
       )
   }

@@ -10,6 +10,8 @@ export default function voteReducer(state = initialState.votes, action) {
       return Object.assign({}, state,
         {votes: {id: action.payload.topic_id, up_vote: true}}
       )
+    case 'CANCEL_UP_VOTE':
+      return state
     default:
       return state;
   }
