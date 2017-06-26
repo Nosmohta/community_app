@@ -14,8 +14,9 @@ export default function topicReducer(state = initialState.topics, action) {
       console.log('from attempt upvote', action.payload)
       Actions.attemptUpVote(action.payload.topic_id, action.payload.token)
       return state
-    case 'UP_VOTE_SUCCESS':
-      return state
+    // case 'UP_VOTE_SUCCESS':
+    //   console.log('UP VOTE SUCCESS', action.payload)
+    //   return state
     case 'UP_VOTE_FAIL':
       console.log('up vote failed')
       return state

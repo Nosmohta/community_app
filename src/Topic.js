@@ -22,8 +22,11 @@ class Topic extends Component {
                  {this.props.topic.description}
                 <br></br>
                 <small>{this.props.topic.date_created}</small>
+                <img className="topic-image" src={this.props.topic.img_path}></img>
+                <div className="votes">
                 <UpVote topic={this.props.topic} voteCount={this.props.topic.up_votes} />
-              <DownVote topic={this.props.topic} voteCount={this.props.topic.down_votes} />
+                <DownVote topic={this.props.topic} voteCount={this.props.topic.down_votes} />
+                </div>
               </div>
             </div>
 

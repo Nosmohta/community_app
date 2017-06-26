@@ -20,8 +20,8 @@ export function attemptUpVote(topic_id, token) {
           store.dispatch({
             type: 'UP_VOTE_SUCCESS',
             payload: {
-              //just a placeholder for payload now....will update when api route is finalized
-              data
+              topic_id: topic_id,
+              data: data
             }
           })
         })
