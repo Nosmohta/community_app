@@ -13,7 +13,9 @@ class UpVote extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+
     this.setState({upVotes: nextProps.topic.up_votes})
+
     }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -25,46 +27,58 @@ class UpVote extends Component {
    loadTopics(token);
    const messageClass = this.props.topic._id
    const arrowId = `up${messageClass}`
-   if (!this.state.Vote) {
 
-     $( `#${arrowId}` ).addClass( "voted" ).replaceWith(`<i class="fa fa-arrow-up fa-2x voted" id={arrowId} aria-hidden="true"></i>`);
-   } else {
-     $( `.${messageClass}` ).show();
-   }
+   // if (!this.state.Vote) {
+
+   //   $( `#${arrowId}` ).addClass( "voted" ).replaceWith(`<i class="fa fa-arrow-up fa-2x voted" id={arrowId} aria-hidden="true"></i>`);
+   // } else {
+   //   $( `.${messageClass}` ).show();
+   // }
  }
 
+ handleCancelUpVote (e) {
+  const token = this.props.user.token;
+   loadTopics(token);
+   const messageClass = this.props.topic._id
+   const arrowId = `up${messageClass}`
+ }
+
+
   render () {
-    const messageClass = this.props.topic._id
+    const voteId = this.props.topic._id
     const token = this.props.user.token
-    const arrowId = `up${messageClass}`
+    const arrowId = `up${voteId}`
+     if (this.props.upvotes[0]) {
+        if (this.props.upvotes[0] === this.props.topic._id) {
+      console.log(this.props.upvotes[this.props.topic._id])
+        return (
+            <div>
+            <i className="fa fa-arrow-up fa-2x voted" id={arrowId} aria-hidden="true" onMouseDown={(e) => this.props.attemptUpVote(this.props.topic._id, token)} onMouseUp={this.handleUpVote}>
+            </i><span className="upvoteCount">+{this.state.upVotes}</span>
+            </div> )
+      }else {
+         return (
+            <div>
+            <i className="fa fa-arrow-up fa-2x" id={arrowId} aria-hidden="true" onMouseDown={(e) => this.props.attemptUpVote(this.props.topic._id, token)} onMouseUp={this.handleUpVote}>
+            </i><span className="upvoteCount">+{this.state.upVotes}</span>
+            </div> )
+     }
+    }  else {
+         return (
+            <div>
+            <i className="fa fa-arrow-up fa-2x" id={arrowId} aria-hidden="true" onMouseDown={(e) => this.props.attemptUpVote(this.props.topic._id, token)} onMouseUp={this.handleUpVote}>
+            </i><span className="upvoteCount">+{this.state.upVotes}</span>
+            </div> )
+     }
+    }
 
-
-
-    $(function() {
-    $( `.${messageClass}` ).hide();
-    });
-
-    // if (this.props.votes.messageClass && up_vote === true)
-    //   <div>
-    //     <i className="fa fa-arrow-up fa-2x" id={arrowId} aria-hidden="true" onMouseDown={(e) => this.props.attemptCancelVote(this.props.topic._id, token)} onMouseUp={this.handleUpVote}>
-    //     </i><span className="upvoteCount">+{this.state.upVotes}</span>
-    //     </div>
-
-    return (
-        <div>
-        <i className="fa fa-arrow-up fa-2x" id={arrowId} aria-hidden="true" onMouseDown={(e) => this.props.attemptUpVote(this.props.topic._id, token)} onMouseUp={this.handleUpVote}>
-        </i><span className="upvoteCount">+{this.state.upVotes}</span>
-        </div>
-      )
-  }
 }
 
 const mapStateToProps = (state, ownProps) => {
     return {
       topics: state.topics,
       user: state.user,
-      votes: state.votes
-
+      upvotes: state.upvotes
     };
 }
 

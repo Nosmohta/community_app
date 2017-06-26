@@ -13,7 +13,6 @@ class Conversation extends Component {
 
   render() {
 
-
     return (
     <div className="conversation-container">
     <UploadPhoto/>
@@ -21,8 +20,6 @@ class Conversation extends Component {
     <Subject/>
     </div>
     )
-
-
 
   }
 }

@@ -27,3 +27,17 @@ textarea:focus {
     border:1px solid red;
     box-shadow: 0 0 10px #719ECE;
 }
+
+button.submit-description {
+  width: 100px;
+  float: right;
+  background-color: #557EBF;
+}
+
+button.submit-description:hover {
+  background-color: #40e0d0;
+}
+
+button.submit-description:visited {
+  background-color: #40e0d0;
+}
