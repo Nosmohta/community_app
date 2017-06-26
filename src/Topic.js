@@ -29,9 +29,7 @@ class Topic extends Component {
                 </div>
               </div>
             </div>
-
           </div>
-
       )
 
  }

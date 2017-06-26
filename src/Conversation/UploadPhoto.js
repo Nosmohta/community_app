@@ -30,17 +30,16 @@ class UploadPhoto extends Component {
     let upload = request.post(CLOUDINARY_UPLOAD_URL)
                      .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
                      .field('file', file);
-
     upload.end((err, response) => {
       if (err) {
         console.error(err);
       }
-
       if (response.body.secure_url !== '') {
-        console.log(response.body.secure_url)
+        console.log(response.body.secure_url);
         //call function that sends image to server with image url and token as arguments
-        const token = this.props.user.token
-        attemptUpload(response.body.secure_url, token)
+        const token = this.props.user.token;
+        const conversation_id_state = this.props.user.conversation_id_prime;
+        attemptUpload(response.body.secure_url, token, conversation_id_state);
         this.setState({
         uploadedFileCloudinaryUrl: response.body.secure_url
         });
@@ -68,7 +67,7 @@ class UploadPhoto extends Component {
     let {imagePreviewUrl} = this.state;
     let imagePreview = null;
     if (imagePreviewUrl) {
-      imagePreview = (<div className="imagePreview"> <img src={imagePreviewUrl} /> </div>);
+      imagePreview = (<div className="imagePreview image"> <img src={imagePreviewUrl} /> </div>);
     } else {
       imagePreview = (<div></div>);
     }

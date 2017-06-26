@@ -30,5 +30,5 @@ button.upload-file {
 }
 
 .imagePreview {
-  height: 300px;
+  width: 100%;
 }

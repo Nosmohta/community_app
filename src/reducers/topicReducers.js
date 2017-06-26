@@ -16,6 +16,8 @@ export default function topicReducer(state = initialState.topics, action) {
       return state
     // case 'UP_VOTE_SUCCESS':
     //   console.log('UP VOTE SUCCESS', action.payload)
+
+
     //   return state
     case 'UP_VOTE_FAIL':
       console.log('up vote failed')

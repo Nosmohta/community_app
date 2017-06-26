@@ -22,7 +22,7 @@ class Conversation extends Component {
       </div>
     )
 
-    
+
   }
 }
 

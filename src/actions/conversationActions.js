@@ -3,12 +3,11 @@ import querystring from 'querystring';
 const crypto = require("crypto");
 
 //function called from UploadPhoto component
-export function attemptUpload(img, token) {
-  const data = querystring.stringify({'token': token, 'img': img });
+export function attemptUpload(img, token, conv_id) {
+  const data = querystring.stringify({'token': token, 'img': img , 'conv_id': conv_id});
   const file = img
   console.log('attempt upload ', data)
-  const conversation_id = crypto.randomBytes(5).toString('hex');
-  const request = new Request('http://localhost:8080/upload/conversations/' + conversation_id + '/photo', {
+  const request = new Request('http://localhost:8080/upload/conversations/photo', {
     method: 'POST',
     headers: new Headers({
       'Content-Type': 'application/x-www-form-urlencoded'

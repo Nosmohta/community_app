@@ -17,6 +17,7 @@ export function attemptUpVote(topic_id, token) {
       if(response.ok) {
         response.json().then((data) => {
           console.log("up vote success")
+
           store.dispatch({
             type: 'UP_VOTE_SUCCESS',
             payload: {
