@@ -34,6 +34,8 @@ h1.share.arrow {
    background:  -webkit-linear-gradient(top, rgba(48,42,30,0.55) 0%, rgba(26,24,21,0.2) 100%);
    -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+
 }
 .fa-arrow-up:hover {
    background: #14e653;

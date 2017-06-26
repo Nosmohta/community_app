@@ -13,7 +13,7 @@ class DownVote extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('will recieve', nextProps)
+
     this.setState({DownVotes: nextProps.topic.down_votes})
   }
   shouldComponentUpdate(nextProps, nextState) {
@@ -36,7 +36,7 @@ class DownVote extends Component {
   render () {
     const messageClass = this.props.topic._id
     const token = this.props.user.token
-    console.log('down vote render ', this.state.votes)
+
 
 
     return (

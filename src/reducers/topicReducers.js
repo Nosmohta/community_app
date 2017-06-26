@@ -10,6 +10,7 @@ export default function topicReducer(state = initialState.topics, action) {
       return Object.assign({}, state,
         {topics: action.payload.topics}
       )
+
     case 'ATTEMPT_UP_VOTE':
       console.log('from attempt upvote', action.payload)
       Actions.attemptUpVote(action.payload.topic_id, action.payload.token)
@@ -31,6 +32,7 @@ export default function topicReducer(state = initialState.topics, action) {
     case 'DOWN_VOTE_FAIL':
       console.log('up vote failed')
       return state
+
     default:
       return state;
   }

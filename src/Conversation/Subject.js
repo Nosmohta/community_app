@@ -20,15 +20,17 @@ class Subject extends Component {
 
     return (
              <Container className="subject">
-               <div>
+
                 <label className="radio-label">
                   <input type="radio" className="option-input radio" name="example" checked />
                   Radio option
                 </label>
+                <br></br>
                 <label className="radio-label">
                   <input type="radio" className="option-input radio" name="example" />
                   Radio option
                 </label>
+                <br></br>
                 <label className="radio-label">
                   <input type="radio" className="option-input radio other"
                   name="example" onClick={this.handleOther} value="" />
@@ -36,7 +38,7 @@ class Subject extends Component {
                 </label>
                 <br></br>
                 <input type="text" id="other" placeholder="Enter a Subject"/>
-              </div>
+
                </Container>
 
         )

@@ -5,5 +5,6 @@ export default {
   alert_message: '',
   logged_in: false,
   token:'',
-  votes: []
+  upvotes: [],
+  downvotes: []
 }
