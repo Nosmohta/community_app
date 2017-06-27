@@ -1,4 +1,3 @@
-import TopicApi from '../api/TopicApi';
 import store from '../index.js';
 import querystring from 'querystring';
 
@@ -41,6 +40,7 @@ export function attemptUpVote(topic_id, token) {
 }
 
 export function attemptDownVote(topic_id, token) {
+  console.log('attemptDownVote')
   const data = querystring.stringify({'topic_id': topic_id, 'token': token, 'vote_up': false, 'vote_down': true })
   const request = new Request('http://localhost:8080/api/topics/' + topic_id  +'/vote', {
     method: 'POST',
@@ -57,8 +57,9 @@ export function attemptDownVote(topic_id, token) {
           store.dispatch({
             type: 'DOWN_VOTE_SUCCESS',
             payload: {
-              //just a placeholder for payload now....will update when api route is finalized
-              data
+
+              topic_id: topic_id,
+              data: data
             }
           })
         })
@@ -68,6 +69,88 @@ export function attemptDownVote(topic_id, token) {
           console.log("down vote fail")
           store.dispatch({
             type: 'DOWN_VOTE_FAIL',
+            payload: {
+              message: data.message,
+            }
+          })
+        })
+      }
+    })
+    .catch( err => console.log(err));
+}
+
+export function attemptCancelDownVote(topic_id, token) {
+  console.log('attempt Cancel Down Vote', store.getState().topics.topics)
+  const topics = store.getState().topics.topics
+  const data = querystring.stringify({'topic_id': topic_id, 'token': token, 'vote_up': false, 'vote_down': true })
+  const request = new Request('http://localhost:8080/api/topics/' + topic_id  +'/cancel', {
+    method: 'POST',
+    headers: new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }),
+    body: data
+  });
+  fetch(request)
+    .then((response) => {
+      if(response.ok) {
+        response.json().then((data) => {
+          console.log("cancel down vote success")
+          store.dispatch({
+            type: 'CANCEL_DOWN_VOTE_SUCCESS',
+            payload: {
+
+              topic_id: topic_id,
+              data: data,
+              topics: topics
+            }
+          })
+        })
+      } else {
+        console.log(response)
+        response.json().then((data) => {
+          console.log("down vote fail")
+          store.dispatch({
+            type: 'CANCEL_DOWN_VOTE_FAIL',
+            payload: {
+              message: data.message,
+            }
+          })
+        })
+      }
+    })
+    .catch( err => console.log(err));
+}
+
+export function attemptCancelUpVote(topic_id, token) {
+  console.log('attempt Cancel Up Vote')
+  const data = querystring.stringify({'topic_id': topic_id, 'token': token, 'vote_up': false, 'vote_down': true })
+  const request = new Request('http://localhost:8080/api/topics/' + topic_id  +'/cancel', {
+    method: 'POST',
+    headers: new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }),
+    body: data
+  });
+  fetch(request)
+    .then((response) => {
+      if(response.ok) {
+        response.json().then((data) => {
+          console.log("cancel up vote success")
+          store.dispatch({
+            type: 'CANCEL_UP_VOTE_SUCCESS',
+            payload: {
+
+              topic_id: topic_id,
+              data: data
+            }
+          })
+        })
+      } else {
+        console.log(response)
+        response.json().then((data) => {
+          console.log("down vote fail")
+          store.dispatch({
+            type: 'CANCEL_UP_VOTE_FAIL',
             payload: {
               message: data.message,
             }

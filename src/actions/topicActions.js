@@ -3,6 +3,7 @@ import store from '../index.js';
 import querystring from 'querystring';
 
 
+
 export function attemptUpVote(topic_id, token) {
   const data = querystring.stringify({'topic_id': topic_id, 'token': token, 'vote_up': true, 'vote_down': false});
   const request = new Request('http://localhost:8080/api/topics/' + topic_id  +'/vote', {

@@ -104,7 +104,7 @@ class TopicsList extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('from TopicList component ', state)
+  console.log('from TopicList component state =', state)
     return {
       topics: state.topics,
       user: state.user,
