@@ -9,7 +9,7 @@ class Topic extends Component {
     return (
 
 
-            <div className="card">
+            <div className="card topic-card">
 
             <div className="card-content">
               <div className="media">

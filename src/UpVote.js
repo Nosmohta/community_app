@@ -48,7 +48,7 @@ class UpVote extends Component {
 
      $( `#${arrowId}` ).removeClass( "voted" );
 
-     let delayMillis = 3000; //1 second
+     let delayMillis = 2000; //2 second
      setTimeout(function() {
     //your code to be executed after 1 second
 
