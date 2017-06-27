@@ -22,7 +22,7 @@ class Subject extends Component {
    $(function() { $( '#other' ).hide() });
 
     return (
-<<<<<<< HEAD
+
       <Container className="subject">
 
        { this.props.conversations.subject_guess_photo &&
