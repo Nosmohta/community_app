@@ -23,10 +23,12 @@ class Description extends Component {
   }
 
   handleSubmit(e) {
-    const description = this.state.content
-    if (this.props.conversations) {
-    attemptAddDescription(description, this.props.conversations.conversations.img)
-   }
+    e.preventDefault();
+    const description = this.state.content;
+    const token = this.props.user.token;
+    const conv_id = this.props.conversations.conv_id
+    console.log(token)
+    attemptAddDescription(token, description, conv_id)
   }
 
 

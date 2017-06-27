@@ -6,7 +6,7 @@ const crypto = require("crypto");
 export function attemptUpload(img, token, conv_id) {
   const data = querystring.stringify({'token': token, 'img': img , 'conv_id': conv_id});
   const file = img
-  console.log('attempt upload ', data)
+  console.log('attempt upload ', data);
   const request = new Request('http://localhost:8080/upload/conversations/photo', {
     method: 'POST',
     headers: new Headers({
@@ -23,8 +23,10 @@ export function attemptUpload(img, token, conv_id) {
           store.dispatch({
             type: 'UPLOAD_SUCCESS',
             payload: {
-              //just a placeholder for payload now....will update when api route is finalized
-             id: conversation_id, img: img
+              conv_id: data.conv_id,
+              pending_photo: false,
+              subject_guess_photo: data.subject_guess_photo,
+              message: ''
             }
           })
         })
@@ -46,44 +48,45 @@ export function attemptUpload(img, token, conv_id) {
 
 
 
-export function attemptAddDescription(description, img) {
-  // const data = querystring.stringify({'token': token, 'Description': description });
-  // const conversation_id = crypto.randomBytes(5).toString('hex');
-  // const request = new Request('http://localhost:8080/api/conversations/' + conversation_id + '/photo', {
-  //   method: 'POST',
-  //   headers: new Headers({
-  //     'Content-Type': 'application/x-www-form-urlencoded'
-  //   }),
-  //   body: data
-  // });
-  // fetch(request)
-  //   .then((response) => {
-  //     if(response.ok) {
-  //       response.json().then((data) => {
-  //         console.log("upload success")
+export function attemptAddDescription(token, description, conv_id) {
+
+  const data = querystring.stringify({'token': token, 'description': description, 'conv_id': conv_id });
+  const request = new Request('http://localhost:8080/api/conversations/description', {
+    method: 'POST',
+    headers: new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }),
+    body: data
+  });
+  fetch(request)
+    .then((response) => {
+      if(response.ok) {
+        response.json().then((data) => {
           store.dispatch({
             type: 'DESCRIPTION_SUCCESS',
             payload: {
+              conv_id: data.conv_id,
+              pending_desc: false,
+              subject_guess_description: data.subject_guess_description,
+              message: '',
+              subject_visible: true,
 
-              description,
-              img
             }
           })
-//         })
-//       } else {
-//         console.log(response)
-//         response.json().then((data) => {
-//           console.log("upload fail")
-//           store.dispatch({
-//             type: 'DESCRIPTION_FAIL',
-//             payload: {
-//               message: data.message,
-//             }
-//           })
-//         })
-//       }
-//     })
-//     .catch( err => console.log(err));
+        })
+      } else {
+        console.log(response)
+        response.json().then((data) => {
+          store.dispatch({
+            type: 'DESCRIPTION_FAIL',
+            payload: {
+              message: data.message,
+            }
+          })
+        })
+      }
+    })
+    .catch( err => console.log(err));
  }
 
 export function attemptAddSubject(token, subject) {

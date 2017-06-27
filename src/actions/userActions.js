@@ -19,7 +19,6 @@ export function loadUsersSuccess(users) {
 
 
 export function attemptLogin(email, password) {
-
   const data = querystring.stringify({'email': email, 'password': password})
   const request = new Request('http://localhost:8080/login', {
     method: 'POST',
