@@ -48,9 +48,17 @@ export default function userReducer(state = initialState.users, action) {
         action.payload
       )
 
+
     case 'CLEAR_MESSAGE':
       return Object.assign({}, state,
         {...action.payload}
+      )
+
+
+    case 'ATTEMPT_LOGOUT':
+      console.log(action.payload)
+      return Object.assign({}, state,
+        action.payload
       )
 
 

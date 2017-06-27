@@ -44,6 +44,7 @@ class TopicsList extends Component {
     const topics = this.props.topics.topics
 
      if (topics) {
+
         return (
 
         <div className="container topics-page-canvas">

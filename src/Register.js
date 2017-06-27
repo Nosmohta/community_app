@@ -65,7 +65,9 @@ class Register extends Component {
             <input className="input"  value={this.state.password} onChange={this.handlePassword} type="password" placeholder="Password" ref="password"/>
           </p>
           <br></br>
-          <button className="button is-outlined is-large" type="submit" onClick={(e) => this.props.attemptRegister(this.state.firstname, this.state.lastname, this.state.email, this.state.password, e)}>Join the Community!</button>
+          {this.state.firstname && this.state.lastname && this.state.email && this.state.password &&
+          <button className="button is-outlined is-large register-button" type="submit" onClick={(e) => this.props.attemptRegister(this.state.firstname, this.state.lastname, this.state.email, this.state.password, e)}>Join the Community!</button>
+           }
         </form>
       </Columns>
       );

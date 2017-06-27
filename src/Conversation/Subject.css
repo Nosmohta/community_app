@@ -36,7 +36,7 @@
   margin-right: 0.5rem;
   outline: none;
   position: relative;
-  z-index: 1000;
+  z-index: 9;
 }
 .option-input:hover {
   background: #9faab7;
@@ -107,6 +107,4 @@ div.container.subject {
   margin-left: auto;
   margin-right: auto;
   width: 200px;
-
-
 }

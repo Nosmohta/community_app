@@ -16,8 +16,15 @@ class UploadPhoto extends Component {
     super(props);
     this.state = {
       file: '',
-      imagePreviewUrl: ''
+      imagePreviewUrl: '',
+      uploadedFileCloudinaryUrl: '',
+      pending: false
     };
+  }
+
+
+  componentWillReceiveProps(nextProps) {
+    console.log('')
   }
 
   handleSubmit(e) {
@@ -77,17 +84,14 @@ class UploadPhoto extends Component {
     return (
 
          <div className="card photo-container">
-          <form onSubmit={(e)=>this._handleSubmit(e)}>
+          <form>
           <input className="fileInput button is-white" type="file" onChange={(e)=>this.handleImageChange(e)} />
           <button className="button upload-file">Choose a photo</button>
           </form>
           <div>
            {imagePreview}
           </div>
-          {this.state.file &&
-          <button className="photoSubmit button" type="submit" onClick={(e)=>this.handleSubmit(e)}>Upload Photo</button> }
-
-
+          {this.state.file && <button className="photoSubmit button" type="submit" onClick={(e)=>this.handleSubmit(e)}>Upload Photo</button> }
           </div>
     )
   }
