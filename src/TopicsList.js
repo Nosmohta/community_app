@@ -41,45 +41,53 @@ class TopicsList extends Component {
   }
 
   render() {
-    if (this.props.conversations.conversations) {
-    console.log(this.props.conversations.conversations.img)
-  }
     const topics = this.props.topics.topics
+
      if (topics) {
-         return (
+        return (
 
-              <div className="container topics-page-canvas">
-               <img className="logo" src="YourCityLogo.png" alt="Smiley face" height="150" width="150"/ >
-               <h1 className="share">Share something with your Community !</h1>
-               <h1 className="share arrow">&darr;</h1>
-              <Conversation/>
+        <div className="container topics-page-canvas">
+           <img className="logo" src="YourCityLogo.png" alt="Smiley face" height="150" width="150"/ >
+           <h1 className="share">Share something with your Community !</h1>
+           <h1 className="share arrow">&darr;</h1>
+          <Conversation/>
 
-               {this.props.conversations.conversations &&
-                <div className="card">
-                  <div className="card-content">
-                    <div className="media">
-                      <div className="media-content">
-                        <p className="title is-4">Enter a Subject</p>
-                      </div>
-                    </div>
-
-                    <div className="content">
-                       {this.props.conversations.conversations.description}
-                      <br></br>
-                      <small>{Date.now()}</small>
-                      <img className="topic-image" src={this.props.conversations.conversations.img}></img>
-                      <div className="votes">
-
-                      </div>
-                    </div>
+           {this.props.conversations.conversations &&
+            <div className="card">
+              <div className="card-content">
+                <div className="media">
+                  <div className="media-content">
+                    <p className="title is-4">Enter a Subject</p>
                   </div>
-                </div>}
+                </div>
 
-              <div className="column topics-canvas">
-               {this.props.topics.topics.map((topic) => <Topic topic={topic} key={topic._id} />)}
-              </div>
-              </div>
+                <div className="content">
+                   {this.props.conversations.conversations.description}
+                  <br></br>
+                  <small>{Date.now()}</small>
+                  <img className="topic-image" src={this.props.conversations.conversations.img}></img>
+                  <div className="votes">
 
+                  </div>
+                </div>
+              </div>
+            </div>}
+
+          <div className="column topics-canvas">
+           {this.props.topics.topics.map((topic) => <Topic topic={topic} key={topic._id} />)}
+          </div>
+
+          {this.props.user.message &&
+          <div className="modal is-active" >
+            <div className="modal-background"></div>
+            <div className="modal-content">
+              <div className="notification is-primary">
+                {this.props.user.message}
+              </div>
+            </div>
+            <button className="modal-close" onClick={ (e) => this.props.clearMessage(e)}></button>
+          </div>}
+        </div>
           )
         } else {
           return (
@@ -100,7 +108,6 @@ class TopicsList extends Component {
             )
         }
   }
-
 }
 
 const mapStateToProps = (state, ownProps) => {
@@ -110,12 +117,22 @@ const mapStateToProps = (state, ownProps) => {
       user: state.user,
       conversations: state.conversations
     };
-}
+};
 
-// const mapDispatchToProps = (dispatch) => {
+ const mapDispatchToProps = (dispatch) => {
+   return{
+     clearMessage: (e) => {
+       e.preventDefault();
+       dispatch({
+         type: 'CLEAR_MESSAGE',
+         payload: {
+          message: '',
+         }
+       })
+     }
+   }
+ };
 
 
-// };
+export default connect(mapStateToProps, mapDispatchToProps)(TopicsList);
 
-
-export default connect(mapStateToProps, null)(TopicsList);

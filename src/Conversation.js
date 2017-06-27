@@ -13,16 +13,52 @@ class Conversation extends Component {
 
   render() {
 
+
     return (
       <div className="conversation-container">
         <UploadPhoto/>
         <Description/>
-        <Subject/>
+
+        { (this.props.conversations.subject_guess_photo || this.props.conversations.subject_guess_description) &&
+        <Subject/>}
+
+        {this.props.conversations.message &&
+          <div className="modal is-active" >
+            <div className="modal-background"></div>
+            <div className="modal-content">
+              <div className="notification is-primary">
+                {this.props.conversations.message}
+              </div>
+          </div>
+          <button className="modal-close" onClick={ (e) => this.props.clearMessage(e)}></button>
+        </div>}
+
       </div>
     )
-
-
   }
 }
 
-export default Conversation;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    conversations: state.conversations
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return{
+    clearMessage: (e) => {
+      e.preventDefault();
+      dispatch({
+        type: 'CLEAR_MESSAGE',
+        payload: {
+          message: '',
+        }
+      })
+    }
+  }
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Conversation)
+
+

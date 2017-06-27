@@ -9,9 +9,9 @@ class Topic extends Component {
     return (
 
 
-            <div className="card">
-
+          <div className="card">
             <div className="card-content">
+
               <div className="media">
                 <div className="media-content">
                   <p className="title is-4">{this.props.topic.subject}</p>
@@ -28,6 +28,7 @@ class Topic extends Component {
                 <DownVote topic={this.props.topic} voteCount={this.props.topic.down_votes} />
                 </div>
               </div>
+
             </div>
           </div>
       )

@@ -72,6 +72,8 @@ class UploadPhoto extends Component {
       imagePreview = (<div></div>);
     }
 
+    console.log(this.props.conversations);
+
     return (
 
          <div className="card photo-container">
@@ -84,6 +86,8 @@ class UploadPhoto extends Component {
           </div>
           {this.state.file &&
           <button className="photoSubmit button" type="submit" onClick={(e)=>this.handleSubmit(e)}>Upload Photo</button> }
+
+
           </div>
     )
   }

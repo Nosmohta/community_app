@@ -4,6 +4,7 @@ const crypto = require("crypto");
 
 //function called from UploadPhoto component
 export function attemptUpload(img, token, conv_id) {
+  console.log("attempting upload function: ", img)
   const data = querystring.stringify({'token': token, 'img': img , 'conv_id': conv_id});
   const file = img
   console.log('attempt upload ', data);
@@ -89,11 +90,11 @@ export function attemptAddDescription(token, description, conv_id) {
     .catch( err => console.log(err));
  }
 
-export function attemptAddSubject(token, subject) {
+
+export function submitSubject(token, subject) {
   console.log('attempt add subject ', subject + token)
-  const data = querystring.stringify({'token': token, 'Subject': subject });
-  const conversation_id = crypto.randomBytes(5).toString('hex');
-  const request = new Request('http://localhost:8080/api/conversations/' + conversation_id + '/photo', {
+  const data = querystring.stringify({'token': token, 'subject': subject });
+  const request = new Request('http://localhost:8080/api/conversations/subject', {
     method: 'POST',
     headers: new Headers({
       'Content-Type': 'application/x-www-form-urlencoded'
@@ -108,8 +109,8 @@ export function attemptAddSubject(token, subject) {
           store.dispatch({
             type: 'SUBJECT_SUCCESS',
             payload: {
-              //just a placeholder for payload now....will update when api route is finalized
-              data
+              question: data.question,
+              newTopic: data.newTopic
             }
           })
         })

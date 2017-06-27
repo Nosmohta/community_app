@@ -4,7 +4,7 @@ import Login from '../Login'
 import * as Actions from '../actions/userActions'
 
 
-export default function userReducer(state = initialState, action) {
+export default function userReducer(state = initialState.users, action) {
 
   switch(action.type) {
     case 'LOAD_USERS_SUCCESS':
@@ -48,6 +48,10 @@ export default function userReducer(state = initialState, action) {
         action.payload
       )
 
+    case 'CLEAR_MESSAGE':
+      return Object.assign({}, state,
+        {...action.payload}
+      )
 
 
     default:
