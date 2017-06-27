@@ -1,39 +1,27 @@
 import React, {Component} from 'react';
+import './Header.css';
+import {Link} from 'react-router-dom'
+import {attemptLogout} from './actions/userActions'
 
 class Header extends Component {
 
+
+
+  handleLogout(e) {
+    attemptLogout()
+  }
+
   render() {
-    return (
-      <nav className="nav has-shadow">
-  <div className="container">
-    <div className="nav-left">
-      <a className="nav-item">
-      </a>
-      <a className="nav-item is-tab is-hidden-mobile is-active">Home</a>
-      <a className="nav-item is-tab is-hidden-mobile">Features</a>
-      <a className="nav-item is-tab is-hidden-mobile">Pricing</a>
-      <a className="nav-item is-tab is-hidden-mobile">About</a>
-    </div>
-    <span className="nav-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </span>
-    <div className="nav-right nav-menu">
-      <a className="nav-item is-tab is-hidden-tablet is-active">Home</a>
-      <a className="nav-item is-tab is-hidden-tablet">Features</a>
-      <a className="nav-item is-tab is-hidden-tablet">Pricing</a>
-      <a className="nav-item is-tab is-hidden-tablet">About</a>
-      <a className="nav-item is-tab">
-        <figure className="image is-16x16">
-        </figure>
-        Profile
-      </a>
-      <a className="nav-item is-tab">Log out</a>
-    </div>
-  </div>
-</nav>
-    );
+          return (
+                  <nav className="nav has-shadow">
+                    <div className="nav-right">
+                    <a className="nav-item">
+                    </a>
+                    <a className="nav-item is-tab" href='#top'>Home</a>
+                    </div>
+                    <Link className="nav-item is-tab" to='/login' onClick={this.handleLogout}>Log out</Link>
+                  </nav>
+          );
   }
 }
 export default Header;

@@ -22,7 +22,7 @@ class Subject extends Component {
              <Container className="subject">
 
                 <label className="radio-label">
-                  <input type="radio" className="option-input radio" name="example" checked />
+                  <input type="radio" className="option-input radio" name="example" />
                   Radio option
                 </label>
                 <br></br>

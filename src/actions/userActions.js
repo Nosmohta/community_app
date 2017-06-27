@@ -117,3 +117,14 @@ export function attemptRegister(firstname, lastname, email, password) {
     .catch( err => console.log(err));
 
 }
+
+export function attemptLogout() {
+  store.dispatch({
+            type: 'ATTEMPT_LOGOUT',
+            payload: {
+              logged_in: false,
+              alert_message: 'logout',
+              token: ''
+            }
+          })
+}

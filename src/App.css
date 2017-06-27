@@ -15,11 +15,12 @@ form.register {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding: 40px 20px 40px 20px;
+  padding: 40px 20px 80px 20px;
   width: 400px;
   border-radius: 40px;
   opacity: 0.95;
   margin-top: 5%;
+  margin-bottom: 100%;
 }
 
 .input {
@@ -75,5 +76,11 @@ p.home-form {
 h1.Home {
   color:black;
   font-size: 100px;
+}
+
+.register-button {
+  position: absolute;
+  bottom: 200px;
+  left: 800px;
 }
 

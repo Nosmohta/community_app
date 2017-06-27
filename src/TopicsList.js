@@ -47,8 +47,8 @@ class TopicsList extends Component {
     const topics = this.props.topics.topics
      if (topics) {
          return (
-
               <div className="container topics-page-canvas">
+              <Header></Header>
                <img className="logo" src="YourCityLogo.png" alt="Smiley face" height="150" width="150"/ >
                <h1 className="share">Share something with your Community !</h1>
                <h1 className="share arrow">&darr;</h1>
