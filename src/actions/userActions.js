@@ -56,21 +56,11 @@ export function attemptLogin(email, password) {
       }
     })
     .catch( err => console.log(err));
-
 }
 
-export function getAllUsers() {
-  return fetch('http://localhost:8080/api/users')
-    .then(response => {
-      return response;
-    })
-    .catch(error => {
-      return error;
-    });
-}
+
 
 export function attemptRegister(firstname, lastname, email, password) {
-
 
   const data = querystring.stringify({
     'firstname': firstname.toLowerCase(),

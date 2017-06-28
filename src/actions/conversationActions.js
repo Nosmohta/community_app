@@ -100,11 +100,13 @@ export function submitSubject(token, subject, conv_id) {
     }),
     body: data
   });
+
   fetch(request)
     .then((response) => {
       if(response.ok) {
         response.json().then((data) => {
           console.log("upload success");
+          console.log(store.conversations)
           store.dispatch({
             type: 'SUBJECT_SUCCESS',
             payload: {

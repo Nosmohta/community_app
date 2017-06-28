@@ -28,21 +28,36 @@ class Login extends Component {
 
   render() {
     return (
-      <Columns>
-      <form className="register">
-      <img className="logo" src="YourCityLogo.png" alt="Smiley face" height="150" width="150"/ >
-      <h1 className="form-title">Community Login</h1>
-        <p className="control">
-          <input className="input"  value={this.state.email} onChange={this.handleEmail} type="text" placeholder="Email" ref="email"/>
-        </p>
-        <br></br>
-        <p className="control">
-          <input className="input"  value={this.state.password} onChange={this.handlePassword} type="password" placeholder="Password" ref="password"/>
-        </p>
-        <br></br>
-       <button className="button is-outlined is-large login" type="submit" onClick={(e) => this.props.attemptLogin(this.state.email, this.state.password, e)}>Login</button>
-      </form>
-      </Columns>
+      <div>
+
+        <Columns>
+        <form className="register">
+        <img className="logo" src="YourCityLogo.png" alt="Smiley face" height="150" width="150"/ >
+        <h1 className="form-title">Community Login</h1>
+          <p className="control">
+            <input className="input"  value={this.state.email} onChange={this.handleEmail} type="text" placeholder="Email" ref="email"/>
+          </p>
+          <br></br>
+          <p className="control">
+            <input className="input"  value={this.state.password} onChange={this.handlePassword} type="password" placeholder="Password" ref="password"/>
+          </p>
+          <br></br>
+         <button className="button is-outlined is-large login" type="submit" onClick={(e) => this.props.attemptLogin(this.state.email, this.state.password, e)}>Login</button>
+        </form>
+        </Columns>
+
+        {this.props.user.message &&
+        <div className="modal is-active" >
+          <div className="modal-background"></div>
+          <div className="modal-content">
+            <div className="notification is-primary">
+              <button className="delete" onClick={ (e) => this.props.clearMessage(e)}></button>
+              {this.props.user.message}
+            </div>
+          </div>
+        </div>}
+
+      </div>
     );
   }
 };
@@ -50,12 +65,13 @@ class Login extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    email: "",
+    user: state.user,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return{
+
+ return{
     attemptLogin: (email, password, e) => {
       e.preventDefault();
       dispatch({
@@ -65,7 +81,17 @@ const mapDispatchToProps = (dispatch) => {
           password: password
         }
       })
+    },
+    clearMessage: (e) => {
+      e.preventDefault();
+      dispatch({
+        type: 'CLEAR_MESSAGE',
+          payload: {
+            message: '',
+          }
+      })
     }
+
   }
 
 };
