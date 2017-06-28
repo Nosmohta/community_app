@@ -160,3 +160,13 @@ export function attemptCancelUpVote(topic_id, token) {
     })
     .catch( err => console.log(err));
 }
+
+export function loadUpVotes (topic) {
+  store.dispatch({type: 'LOAD_UP_VOTES',payload: topic })
+}
+
+// export function loadDownVotes {
+//   store.dispatch({type: 'LOAD_DOWN_VOTES',payload: {message: data.message,
+//             }
+//           })
+// }

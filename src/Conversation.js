@@ -28,10 +28,9 @@ class Conversation extends Component {
         </CSSTransitionGroup>
 
         <Description/>
-
+        {this.props.conversations.pending_photo &&  <a className="button is-loading">Loading</a>}
         { (this.props.conversations.subject_guess_photo || this.props.conversations.subject_guess_description) &&
         <Subject/>}
-
         {this.props.conversations.message &&
           <div className="modal is-active" >
             <div className="modal-background"></div>

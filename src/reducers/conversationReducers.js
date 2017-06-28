@@ -14,6 +14,11 @@ export default function topicReducer(state = initialState.topics, action) {
       return Object.assign({}, state,
         {...action.payload}
       )
+    case 'PHOTO_PENDING':
+    console.log('here!')
+      return Object.assign({}, state,
+        {...action.payload}
+      )
 
     case 'DESCRIPTION_SUCCESS':
       return Object.assign({}, state,
@@ -43,8 +48,6 @@ export default function topicReducer(state = initialState.topics, action) {
       return Object.assign({}, state,
         {...action.payload}
       )
-
-
 
     default:
       return state;
