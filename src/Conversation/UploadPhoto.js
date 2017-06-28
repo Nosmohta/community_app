@@ -7,6 +7,8 @@ import {attemptUpload} from '../actions/conversationActions';
 import request from 'superagent';
 import cloudinary from 'cloudinary';
 import $ from "jquery";
+import { CSSTransitionGroup } from 'react-transition-group'
+
 
 const CLOUDINARY_UPLOAD_PRESET = 'lxgfr9q6';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/lyvtg7cjl/image/upload';
@@ -29,6 +31,7 @@ class UploadPhoto extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+
     this.handleImageUpload(this.state.file)
   }
 
@@ -56,6 +59,7 @@ class UploadPhoto extends Component {
 
 
   handleImageChange(e) {
+    $('.imagePreview').slideToggle(3000)
     e.preventDefault();
     let reader = new FileReader();
     let file = e.target.files[0];
@@ -66,6 +70,7 @@ class UploadPhoto extends Component {
       });
     }
     reader.readAsDataURL(file)
+
   }
 
 
@@ -86,11 +91,12 @@ class UploadPhoto extends Component {
          <div className="card photo-container">
           <form>
           <input className="fileInput button is-white" type="file" onChange={(e)=>this.handleImageChange(e)} />
-          <button className="button upload-file">Choose a photo</button>
+          {!this.state.file && <button className="button upload-file">Choose a Photo</button> }
+          {this.state.file && <button className="button upload-file">Change Selection</button> }
           </form>
-          <div>
+
            {imagePreview}
-          </div>
+
           {this.state.file && <button className="photoSubmit button" type="submit" onClick={(e)=>this.handleSubmit(e)}>Upload Photo</button> }
           </div>
     )

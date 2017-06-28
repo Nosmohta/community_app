@@ -26,6 +26,7 @@ class DownVote extends Component {
      const arrowId = `down${voteId}`
      const token = this.props.user.token;
      $( `#${arrowId}` ).toggleClass( "voted" );
+     $( `#up${voteId}` ).removeClass( "voted" );
 
      let delayMillis = 3000; //1 second
      setTimeout(function() {
@@ -56,19 +57,18 @@ class DownVote extends Component {
     const arrowId = `down${voteId}`
 
 
-  if (this.props.topic.vote_down) {
+  if (this.props.topic.vote_up) {
         return (
             <div>
-            <i className="fa fa-arrow-down fa-2x voted" id={arrowId} aria-hidden="true" onMouseUp={this.handleCancelVote}>
-            </i><span className="downvoteCount">-{this.state.DownVotes}</span>
+            <i className="fa fa-arrow-down fa-2x" id={arrowId} aria-hidden="true" onMouseDown={(e) => this.props.attemptDownVote(this.props.topic._id, token)} onMouseUp={this.handleDownVote}>
+            </i><span className="downvoteCount">{this.state.DownVotes}</span>
             </div> )
       }else {
          return (
             <div>
-            <i className="fa fa-arrow-down fa-2x" id={arrowId} aria-hidden="true" onMouseDown={(e) => this.props.attemptDownVote(this.props.topic._id, token)} onMouseUp={this.handleDownVote}>
-            </i><span className="downvoteCount">-{this.state.DownVotes}</span>
+            <i className="fa fa-arrow-down fa-2x voted" id={arrowId} aria-hidden="true" onMouseUp={this.handleCancelVote}>
+            </i><span className="downvoteCount">{this.state.DownVotes}</span>
             </div> )
-
     }
   }
 }

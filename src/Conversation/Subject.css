@@ -72,9 +72,8 @@
 }
 
 div.container.subject {
-  width: 500px;
-  margin-left: auto;
-  margin-right: auto;
+
+
   margin-bottom: 150px;
   background: none;
   margin-top: 100px;
@@ -103,8 +102,31 @@ div.container.subject {
   color: white;
   font-size: 20px;
   padding: 5px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
   width: 200px;
+}
+
+  a.button.submit-topic {
+    background-color: #557EBF;
+    border: none;
+    margin-top: 50px;
+    width: 200px;
+    display: block;
+  margin-right: auto;
+  margin-left: auto;
+  }
+
+a.button.submit-topic:hover {
+  background-color: #40e0d0;
+}
+
+@media only screen and (max-width: 700px) {
+   a.button.submit-topic {
+        width: 50%;
+    }
+}
+
+form.select-subject {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
 }

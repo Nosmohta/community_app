@@ -12,6 +12,7 @@ import {Link} from 'react-router-dom'
 import Header from './Header.js';
 import UpVote from './UpVote.js'
 import DownVote from './DownVote.js'
+import { CSSTransitionGroup } from 'react-transition-group'
 
 class TopicsList extends Component {
   componentDidMount () {
@@ -48,9 +49,18 @@ class TopicsList extends Component {
         return (
 
         <div className="container topics-page-canvas">
-           <img className="logo" src="YourCityLogo.png" alt="Smiley face" height="150" width="150"/ >
+           <Header></Header>
+           <img className="logo" src="YourCityLogo.png" alt="CityLogo" height="150" width="150"/ >
+           <CSSTransitionGroup
+            transitionName="example"
+            transitionAppear={true}
+            transitionAppearTimeout={1000}
+            transitionEnter={false}
+            transitionLeave={false}>
            <h1 className="share">Share something with your Community !</h1>
-           <h1 className="share arrow">&darr;</h1>
+           <img className="pointer" src="up-arrow.png"></img>
+           </CSSTransitionGroup>
+
           <Conversation/>
 
            {this.props.conversations.conversations &&

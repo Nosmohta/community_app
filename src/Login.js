@@ -40,7 +40,7 @@ class Login extends Component {
           <input className="input"  value={this.state.password} onChange={this.handlePassword} type="password" placeholder="Password" ref="password"/>
         </p>
         <br></br>
-       <button className="button is-outlined is-large" type="submit" onClick={(e) => this.props.attemptLogin(this.state.email, this.state.password, e)}>Login</button>
+       <button className="button is-outlined is-large login" type="submit" onClick={(e) => this.props.attemptLogin(this.state.email, this.state.password, e)}>Login</button>
       </form>
       </Columns>
     );

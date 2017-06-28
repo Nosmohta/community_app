@@ -29,6 +29,7 @@ class UpVote extends Component {
      const arrowId = `up${voteId}`
 
      $( `#${arrowId}` ).toggleClass( "voted" );
+     $( `#down${voteId}` ).removeClass( "voted" );
      const token = this.props.user.token;
      let delayMillis = 3000; //1 second
      setTimeout(function() {
@@ -65,13 +66,13 @@ class UpVote extends Component {
         return (
             <div>
             <i className="fa fa-arrow-up fa-2x voted" id={arrowId} aria-hidden="true"  onMouseUp={this.handleCancelUpVote}>
-            </i><span className="upvoteCount">+{this.state.upVotes}</span>
+            </i><span className="upvoteCount">{this.state.upVotes}</span>
             </div> )
       }else {
          return (
             <div>
             <i className="fa fa-arrow-up fa-2x" id={arrowId} aria-hidden="true" onMouseDown={(e) => this.props.attemptUpVote(this.props.topic._id, token)} onMouseUp={this.handleUpVote}>
-            </i><span className="upvoteCount">+{this.state.upVotes}</span>
+            </i><span className="upvoteCount">{this.state.upVotes}</span>
             </div> )
 
     }

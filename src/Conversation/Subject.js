@@ -24,14 +24,14 @@ class Subject extends Component {
     return (
 
       <Container className="subject">
-
+        <form className="select-subject is-centered">
        { this.props.conversations.subject_guess_photo &&
         <label className="radio-label">
           <input type="radio" className="option-input radio" name="example" />
           {this.props.conversations.subject_guess_photo}
         </label> }
 
-        <br></br>
+
 
        { this.props.conversations.subject_guess_description &&
         <label className="radio-label">
@@ -39,7 +39,7 @@ class Subject extends Component {
           {this.props.conversations.subject_guess_description}
         </label> }
 
-        <br></br>
+
 
        { (this.props.conversations.subject_guess_description || this.props.conversations.subject_guess_photo) &&
 
@@ -49,16 +49,16 @@ class Subject extends Component {
           Other
         </label>}
 
-        <br></br>
+
         <input type="text" id="other" placeholder="Enter a Subject"/>
 
-        <br></br>
+
         { (this.props.conversations.subject_guess_description || this.props.conversations.subject_guess_photo) &&
           <div className="block">
-            <a className="button is-primary"  onClick={ (e) => this.props.subjectSubmit(e, this.props.token ,"Dumb subject")}>Create Topic</a>
+            <a className="button is-large submit-topic"  onClick={ (e) => this.props.subjectSubmit(e, this.props.token ,"Dumb subject")}>Create Topic</a>
           </div>
         }
-
+       </form>
       </Container>
 
         )

@@ -9,20 +9,22 @@ class Topic extends Component {
     return (
 
 
-          <div className="card">
+          <div className="card topic">
             <div className="card-content">
 
               <div className="media">
                 <div className="media-content">
-                  <p className="title is-4">{this.props.topic.subject}</p>
+                <img className="topic-image" src={this.props.topic.img_path}></img>
+
                 </div>
               </div>
 
               <div className="content">
+               <p className="title is-4">{this.props.topic.subject}</p>
                  {this.props.topic.description}
                 <br></br>
                 <small>{this.props.topic.date_created}</small>
-                <img className="topic-image" src={this.props.topic.img_path}></img>
+
                 <div className="votes">
                 <UpVote topic={this.props.topic} voteCount={this.props.topic.up_votes} />
                 <DownVote topic={this.props.topic} voteCount={this.props.topic.down_votes} />

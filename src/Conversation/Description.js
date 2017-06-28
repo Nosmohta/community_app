@@ -35,7 +35,7 @@ class Description extends Component {
   render () {
     return (
 
-        <div className="media-content">
+        <div className="media-content description">
           <div className="field">
             <p className="control">
               <textarea className="textarea" placeholder="Please describe your topic." defaultValue={this.state.content} onInput = {this.onContent}></textarea>
