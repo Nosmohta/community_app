@@ -35,18 +35,16 @@ class Description extends Component {
   render () {
     return (
 
-        <div className="media-content description">
-          <div className="field">
-            <p className="control">
-              <textarea className="textarea" placeholder="Please describe your topic." defaultValue={this.state.content} onInput = {this.onContent}></textarea>
-              {this.state.content && <button className="button submit-description" onClick={this.handleSubmit}>Submit</button>}
-            </p>
-          </div>
+      <div className="media-content description">
+        <div className="field">
+          <p className="control">
+            <textarea className="textarea" placeholder="Please describe your topic." defaultValue={this.state.content} onInput = {this.onContent}></textarea>
+            {this.state.content && <button className="button submit-description" onClick={this.handleSubmit}>Submit</button>}
+          </p>
         </div>
+      </div>
 
-
-
-        )
+    )
   }
 }
 const mapStateToProps = (state, ownProps) => {

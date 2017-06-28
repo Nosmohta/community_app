@@ -93,13 +93,16 @@ class TopicsList extends Component {
             <div className="modal-background"></div>
             <div className="modal-content">
               <div className="notification is-primary">
+                <button className="delete" onClick={ (e) => this.props.clearMessage(e)}></button>
                 {this.props.user.message}
               </div>
             </div>
-            <button className="modal-close" onClick={ (e) => this.props.clearMessage(e)}></button>
           </div>}
+
+
         </div>
           )
+
         } else {
           return (
                   <Columns>

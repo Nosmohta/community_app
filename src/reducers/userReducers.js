@@ -18,32 +18,26 @@ export default function userReducer(state = initialState.users, action) {
       return state
 
     case 'LOGIN_SUCCESS':
-      console.log("IN REDUCER... login success")
-      return {
-        ...state,
-        token: action.payload.token,
-        logged_in: true
-      }
+      return Object.assign({}, state,
+        action.payload
+      )
 
     case 'LOGIN_FAIL':
-      console.log("IN REDUCER... login fail")
-      return {
-        ...state,
-        alert_message: action.payload.message
-      }
+      return Object.assign({}, state,
+          action.payload
+        )
+
 
     case 'ATTEMPT_REGISTER':
       Actions.attemptRegister(action.payload.firstName, action.payload.lastName,action.payload.email, action.payload.password )
       return state
 
     case 'REGISTRATION_SUCCESS':
-      console.log(action.payload.message)
       return Object.assign({}, state,
         action.payload
       )
 
     case 'REGISTRATION_FAIL':
-      console.log(action.payload.message)
       return Object.assign({}, state,
         action.payload
       )

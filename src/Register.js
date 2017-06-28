@@ -44,39 +44,53 @@ class Register extends Component {
   render() {
 
     return (
-      <Columns>
-        <form className="register">
-          <img className="logo" src="YourCityLogo.png" alt="Smiley face" height="150" width="150"/ >
-          <h1 className="form-title">Community Sign Up!</h1>
-          <br></br>
-          <p className="control">
-            <input className="input"  value={this.state.firstname} onChange={this.handleFirstname}type="text" placeholder="First Name" ref="firstame"/>
-          </p>
-          <br></br>
-          <p className="control">
-            <input className="input"  value={this.state.lastname}  onChange={this.handleLastname}type="text" placeholder="Last Name" ref="lastname"/>
-          </p>
-           <br></br>
-          <p className="control">
-            <input className="input"  value={this.state.email} onChange={this.handleEmail} type="text" placeholder="Email" ref="email"/>
-          </p>
-          <br></br>
-          <p className="control">
-            <input className="input"  value={this.state.password} onChange={this.handlePassword} type="password" placeholder="Password" ref="password"/>
-          </p>
-          <br></br>
-          {this.state.firstname && this.state.lastname && this.state.email && this.state.password &&
-          <button className="button is-outlined is-large register" type="submit" onClick={(e) => this.props.attemptRegister(this.state.firstname, this.state.lastname, this.state.email, this.state.password, e)}>Join the Community!</button>
-           }
-        </form>
-      </Columns>
+      <div>
+        <Columns>
+          <form className="register">
+            <img className="logo" src="YourCityLogo.png" alt="Smiley face" height="150" width="150"/ >
+            <h1 className="form-title">Community Sign Up!</h1>
+            <br></br>
+            <p className="control">
+              <input className="input"  value={this.state.firstname} onChange={this.handleFirstname}type="text" placeholder="First Name" ref="firstame"/>
+            </p>
+            <br></br>
+            <p className="control">
+              <input className="input"  value={this.state.lastname}  onChange={this.handleLastname}type="text" placeholder="Last Name" ref="lastname"/>
+            </p>
+             <br></br>
+            <p className="control">
+              <input className="input"  value={this.state.email} onChange={this.handleEmail} type="text" placeholder="Email" ref="email"/>
+            </p>
+            <br></br>
+            <p className="control">
+              <input className="input"  value={this.state.password} onChange={this.handlePassword} type="password" placeholder="Password" ref="password"/>
+            </p>
+            <br></br>
+            {this.state.firstname && this.state.lastname && this.state.email && this.state.password &&
+            <button className="button is-outlined is-large register" type="submit" onClick={(e) => this.props.attemptRegister(this.state.firstname, this.state.lastname, this.state.email, this.state.password, e)}>Join the Community!</button>
+             }
+          </form>
+        </Columns>
+
+        {this.props.user.message &&
+        <div className="modal is-active" >
+          <div className="modal-background"></div>
+          <div className="modal-content">
+            <div className="notification is-primary">
+              <button className="delete" onClick={ (e) => this.props.clearMessage(e)}></button>
+              {this.props.user.message}
+            </div>
+          </div>
+        </div>}
+      </div>
+
       );
     }
 };
 
   const mapStateToProps = (state, ownProps) => {
     return {
-      email: "test"
+      user: state.user,
     };
   };
 
@@ -91,6 +105,15 @@ class Register extends Component {
             lastName: lastName,
             email: email,
             password: password
+          }
+        })
+      },
+      clearMessage: (e) => {
+        e.preventDefault();
+        dispatch({
+          type: 'CLEAR_MESSAGE',
+            payload: {
+            message: '',
           }
         })
       }

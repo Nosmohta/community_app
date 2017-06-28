@@ -6,6 +6,7 @@ import {Columns} from 'bulma-components'
 import UploadPhoto from './Conversation/UploadPhoto.js'
 import Description from './Conversation/Description.js'
 import Subject from './Conversation/Subject.js'
+import Questions from './Conversation/Questions.js'
 import { CSSTransitionGroup } from 'react-transition-group'
 
 class Conversation extends Component {
@@ -14,37 +15,43 @@ class Conversation extends Component {
 
   render() {
 
-
     return (
       <div className="conversation-container">
 
-       <CSSTransitionGroup
-        transitionName="example"
-        transitionAppear={true}
-        transitionAppearTimeout={500}
-        transitionEnter={false}
-        transitionLeave={false}>
-        <UploadPhoto/>
+        <CSSTransitionGroup
+          transitionName="example"
+          transitionAppear={true}
+          transitionAppearTimeout={500}
+          transitionEnter={false}
+          transitionLeave={false}>
+          <UploadPhoto/>
         </CSSTransitionGroup>
 
         <Description/>
 
-        { (this.props.conversations.subject_guess_photo || this.props.conversations.subject_guess_description) &&
+        { this.props.conversations.subject_guess_description &&
         <Subject/>}
+
+        <Questions/>
+
 
         {this.props.conversations.message &&
           <div className="modal is-active" >
             <div className="modal-background"></div>
             <div className="modal-content">
               <div className="notification is-primary">
+                <button className="delete" onClick={ (e) => this.props.clearMessage(e)}></button>
                 {this.props.conversations.message}
               </div>
-          </div>
-          <button className="modal-close" onClick={ (e) => this.props.clearMessage(e)}></button>
-        </div>}
+            </div>
+          </div>}
+
+
 
       </div>
+
     )
+
   }
 }
 
