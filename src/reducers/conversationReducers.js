@@ -31,7 +31,7 @@ export default function topicReducer(state = initialState.topics, action) {
       )
 
     case 'SUBJECT_SUBMIT':
-      Conversations.submitSubject( action.payload.token ,  action.payload.subject )
+      Conversations.submitSubject( action.payload.token ,  action.payload.subject, action.payload.conv_id )
       return  state
 
     case 'SUBJECT_SUCCESS':

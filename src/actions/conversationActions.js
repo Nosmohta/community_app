@@ -91,9 +91,9 @@ export function attemptAddDescription(token, description, conv_id) {
  }
 
 
-export function submitSubject(token, subject) {
+export function submitSubject(token, subject, conv_id) {
   console.log('attempt add subject ', subject + token)
-  const data = querystring.stringify({'token': token, 'subject': subject });
+  const data = querystring.stringify({'token': token, 'subject': subject, 'conv_id':conv_id });
   const request = new Request('http://localhost:8080/api/conversations/subject', {
     method: 'POST',
     headers: new Headers({
@@ -105,7 +105,7 @@ export function submitSubject(token, subject) {
     .then((response) => {
       if(response.ok) {
         response.json().then((data) => {
-          console.log("upload success")
+          console.log("upload success");
           store.dispatch({
             type: 'SUBJECT_SUCCESS',
             payload: {
@@ -115,9 +115,9 @@ export function submitSubject(token, subject) {
           })
         })
       } else {
-        console.log(response)
+        console.log(response);
         response.json().then((data) => {
-          console.log("upload fail")
+          console.log("upload fail");
           store.dispatch({
             type: 'SUBJECT_FAIL',
             payload: {

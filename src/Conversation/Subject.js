@@ -55,7 +55,7 @@ class Subject extends Component {
         <br></br>
         { (this.props.conversations.subject_guess_description || this.props.conversations.subject_guess_photo) &&
           <div className="block">
-            <a className="button is-primary"  onClick={ (e) => this.props.subjectSubmit(e, this.props.token ,"Dumb subject")}>Create Topic</a>
+            <a className="button is-primary"  onClick={ (e) => this.props.subjectSubmit(e, this.props.token ,"Dumb subject", this.props.conversations.conv_id)}>Create Topic</a>
           </div>
         }
 
@@ -73,13 +73,14 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return{
-    subjectSubmit: (e , token, subject) => {
+    subjectSubmit: (e , token, subject, conv_id) => {
       e.preventDefault();
       dispatch({
         type: 'SUBJECT_SUBMIT',
         payload: {
           subject: subject,
-          token: token
+          token: token,
+          conv_id: conv_id
         }
       })
     }
