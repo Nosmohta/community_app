@@ -55,7 +55,9 @@ class Subject extends Component {
 
         { (this.props.conversations.subject_guess_description || this.props.conversations.subject_guess_photo) &&
           <div className="block">
+
             <a className="button is-large submit-topic"  onClick={ (e) => this.props.subjectSubmit(e, this.props.token ,"Dumb subject")}>Create Topic</a>
+
           </div>
         }
        </form>
@@ -73,13 +75,14 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return{
-    subjectSubmit: (e , token, subject) => {
+    subjectSubmit: (e , token, subject, conv_id) => {
       e.preventDefault();
       dispatch({
         type: 'SUBJECT_SUBMIT',
         payload: {
           subject: subject,
-          token: token
+          token: token,
+          conv_id: conv_id
         }
       })
     }
