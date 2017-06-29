@@ -2,6 +2,7 @@ import {connect} from 'react-redux';
 import React, {Component} from 'react';
 import 'bulma/css/bulma.css'
 import {Container} from 'bulma-components';
+import './Question.css'
 
 
 class QuestionComTag extends Component {
@@ -25,9 +26,9 @@ class QuestionComTag extends Component {
 
   generateRadios(community, i){
     return (
-      <div className="radio" key={i}>
-        <label>
-          <input type="radio" value={community}
+      <div className="radio community" key={i}>
+        <label className="community">
+          <input type="radio" className="community" value={community}
             checked={this.state.selectedOption === community}
             onChange={(e) => this.handleOptionChange(e)} />
             <br/>
@@ -41,14 +42,14 @@ class QuestionComTag extends Component {
 
     return (
       <Container className="subject ">
-        <div>
+        <div className="community">
         {this.props.question.payload.text}
         </div>
-        <form onSubmit={this.handleFormSubmit}>
+        <form className="community" onSubmit={this.handleFormSubmit}>
           {this.props.question.payload.user_communities.map( (community, i) => this.generateRadios(community, i) ) }
         </form>
         { (this.state.selectedOption) &&
-        <div className="block ">
+        <div className="community submit">
           <a className="button is-large submit-topic"  onClick={ (e) => this.props.answerSubmit(e, this.props.token , this.state.selectedOption , this.props.conversations.conv_id, this.props.question.type)}>Add your community tags</a>
         </div>}
 

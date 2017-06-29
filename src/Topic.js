@@ -14,10 +14,10 @@ class Topic extends Component {
 
               <div className="media">
                 <div className="media-content">
-                   {this.props.topic.community_tags.map((tag) => <Community tag={tag} />)}
+
 
                 <img className="topic-image" src={this.props.topic.img_path}></img>
-
+                 {this.props.topic.community_tags.map((tag) => <Community tag={tag} />)}
                 </div>
               </div>
 

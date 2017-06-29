@@ -69,6 +69,7 @@ img.logo {
   width:200px;
   border: solid white 5px;
   border-radius: 100px;
+  box-shadow: 10px 10px 5px rgba(97, 97, 97, 0.5);
 }
 
 p.home-form {
