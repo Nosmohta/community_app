@@ -13,11 +13,16 @@ class Description extends Component {
     super(props);
     this.state = {
       content: '',
+      show: false
     }
       this.onContent = this.onContent.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.showDescription = this.showDescription.bind(this);
   }
 
+  showDescription(e) {
+    this.setState({show: true})
+  }
   onContent(e) {
     this.setState({ content: e.target.value });
   }
@@ -33,6 +38,8 @@ class Description extends Component {
 
 
   render () {
+
+    if (this.state.show) {
     return (
 
       <div className="media-content description">
@@ -42,9 +49,17 @@ class Description extends Component {
             {this.state.content && <button className="button submit-description" onClick={this.handleSubmit}>Submit</button>}
           </p>
         </div>
-      </div>
 
-    )
+        )
+  } else {
+    return (
+      <div>
+      <i className="fa fa-pencil fa-5x" aria-hidden="true" onClick={this.showDescription}></i>
+      <p className="description-prompt">Start a conversation with your community</p>
+      </div>
+)
+  }
+
   }
 }
 const mapStateToProps = (state, ownProps) => {

@@ -10,3 +10,9 @@
 a.nav-item {
   color: white;
 }
+
+img.community-logo {
+  width: 270px;
+  height: 50px;
+  margin-left: 20px;
+}

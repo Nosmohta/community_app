@@ -92,9 +92,9 @@ label.question {
 }
 
 div.conversation-container {
-  background: linear-gradient(#8FB6E2, #567FC0);
+  /*background: linear-gradient(#8FB6E2, #567FC0);
   opacity: 0.9;
-  border-radius: 40px;
+  border-radius: 40px;*/
   padding: 20px 20px 80px 20px;
   width: 500px;
   display: block;
@@ -106,4 +106,10 @@ div.conversation-container {
     div.conversation-container {
         width: 95%;
     }
+}
+
+a.button.is-loading {
+  margin-top: 50px;
+  border: none;
+
 }

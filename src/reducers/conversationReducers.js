@@ -14,6 +14,11 @@ export default function topicReducer(state = initialState.topics, action) {
       return Object.assign({}, state,
         {...action.payload}
       )
+    case 'PHOTO_PENDING':
+    console.log('here!')
+      return Object.assign({}, state,
+        {...action.payload}
+      )
 
     case 'DESCRIPTION_SUCCESS':
       return Object.assign({}, state,
@@ -43,6 +48,7 @@ export default function topicReducer(state = initialState.topics, action) {
       return Object.assign({}, state,
         {...action.payload}
       )
+
 
     case 'ANSWER_SUBMIT':
       Conversations.submitAnswer(action.payload.token, action.payload.answer, action.payload.conv_id , action.payload.answer_type )

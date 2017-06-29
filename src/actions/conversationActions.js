@@ -71,7 +71,6 @@ export function attemptAddDescription(token, description, conv_id) {
               subject_guess_description: data.subject_guess_description,
               message: '',
               subject_visible: true,
-
             }
           })
         })
@@ -132,6 +131,7 @@ export function submitSubject(token, subject, conv_id) {
     .catch( err => console.log(err));
 }
 
+
 export function submitAnswer(token, answer, conv_id, answer_type) {
   const data = querystring.stringify({'token': token, 'answer': answer, 'conv_id':conv_id, 'answer_type': answer_type });
   const request = new Request('http://localhost:8080/api/conversations/answer', {
@@ -167,4 +167,9 @@ export function submitAnswer(token, answer, conv_id, answer_type) {
       }
     })
     .catch( err => console.log(err));
+
+
+export function photoPending () {
+  console.log('photo pending action')
+     store.dispatch({type:'PHOTO_PENDING', payload: {pending_photo: true}})
 }

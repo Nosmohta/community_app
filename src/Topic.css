@@ -47,20 +47,13 @@ p.title.is-4 {
    background:  -webkit-linear-gradient(top, rgba(48,42,30,0.55) 0%, rgba(26,24,21,0.2) 100%);
    -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-   opacity: 0;
+   opacity: .8;
 }
 
 .fa-arrow-up:hover {
    background: #14e653;
    -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-.card-content:hover .fa-arrow-up {
-   opacity: 0.8;
-}
-
-.card-content:hover .fa-arrow-down {
-   opacity: 0.8;
 }
 
 
@@ -74,7 +67,7 @@ p.title.is-4 {
   background: -webkit-linear-gradient(#eee, #333);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  opacity: 0;
+  opacity: .8;
 }
 
 .fa-arrow-down:hover {

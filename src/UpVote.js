@@ -5,7 +5,6 @@ import $ from "jquery";
 import {loadTopics} from './actions/topicActions';
 import {attemptCancelUpVote} from './actions/voteActions'
 
-
 class UpVote extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +20,11 @@ class UpVote extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     console.log('rerender upvotes ', nextProps)
+    if (this.props.topic.vote_up !== nextProps.topic.vote_up) {
     return true
+    } else {
+      return false
+    }
   }
 
    handleUpVote(e) {

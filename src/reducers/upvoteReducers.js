@@ -2,9 +2,15 @@ import initialState from './initialState';
 import * as Actions from '../actions/voteActions'
 
 
-export default function upvoteReducer(state = initialState.topics, action) {
+export default function upvoteReducer(state = initialState.upvotes, action) {
 
   switch(action.type) {
+    case 'LOAD_UP_VOTES':
+      console.log('load votes', action.payload)
+      return {
+        ...state,
+        upvotes: [...state, action.payload._id]
+    }
     case 'ATTEMPT_UP_VOTE':
       console.log('from attempt upvote', action.payload)
       Actions.attemptUpVote(action.payload.topic_id, action.payload.token)
