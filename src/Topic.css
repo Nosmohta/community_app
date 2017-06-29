@@ -196,3 +196,9 @@ img.pointer {
     -webkit-transform: translateY(0%);
   }
 }
+
+p.tags {
+  float: left;
+  color:#d3d3d3;
+  font-size: 14px;
+}

@@ -167,7 +167,7 @@ export function submitAnswer(token, answer, conv_id, answer_type) {
       }
     })
     .catch( err => console.log(err));
-
+}
 
 export function photoPending () {
   console.log('photo pending action')
