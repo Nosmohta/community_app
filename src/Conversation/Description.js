@@ -13,7 +13,9 @@ class Description extends Component {
     super(props);
     this.state = {
       content: '',
-      show: false
+      show: false,
+      char_count: 0,
+      over_limit: 'counter under_limit'
     }
       this.onContent = this.onContent.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,7 +26,12 @@ class Description extends Component {
     this.setState({show: true})
   }
   onContent(e) {
-    this.setState({ content: e.target.value });
+    this.setState({
+      content: e.target.value,
+      char_count: e.target.value.length,
+      over_limit: (e.target.value.length > 250)? 'counter over_limit' : 'counter under_limit'
+    });
+    console.log(this.state.over_limit)
   }
 
   handleSubmit(e) {
@@ -32,8 +39,11 @@ class Description extends Component {
     const description = this.state.content;
     const token = this.props.user.token;
     const conv_id = this.props.conversations.conv_id
-    console.log(token)
-    attemptAddDescription(token, description, conv_id)
+    if(this.state.content.length >250) {
+      console.log("dispatch message")
+    } else {
+      attemptAddDescription(token, description, conv_id)
+    }
   }
 
 
@@ -45,8 +55,10 @@ class Description extends Component {
       <div className="media-content description">
         <div className="field">
           <p className="control">
-            <textarea className="textarea" placeholder="Please describe your topic." defaultValue={this.state.content} onInput = {this.onContent}></textarea>
-            {this.state.content && <button className="button submit-description" onClick={this.handleSubmit}>Submit</button>}
+            <textarea autoFocus className="textarea" placeholder="Tell us about your community" defaultValue={this.state.content} onKeyDown={this.onContent}></textarea>
+            <div  className={this.state.over_limit}> {this.state.char_count}/250 </div>
+
+            {this.state.content && <button className="button submit-description" onClick={ (e) => this.handleSubmit(e)}>Submit</button>}
           </p>
         </div>
         </div>

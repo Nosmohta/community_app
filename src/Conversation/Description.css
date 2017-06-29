@@ -45,7 +45,7 @@ textarea:focus {
 
 button.submit-description {
   width: 100px;
-  float: right;
+  float: center;
   background-color: #557EBF;
   border: none;
 }
@@ -79,4 +79,18 @@ p.description-prompt {
   color: white;
   font-size: 30px;
   text-align: center;
+}
+
+.counter{
+  width: 100%;
+  text-align: right;
+
+}
+
+.under_limit{
+  color: white;
+}
+
+.over_limit{
+  color: red;
 }

@@ -49,7 +49,6 @@ export default function topicReducer(state = initialState.topics, action) {
         {...action.payload}
       )
 
-
     case 'ANSWER_SUBMIT':
       Conversations.submitAnswer(action.payload.token, action.payload.answer, action.payload.conv_id , action.payload.answer_type )
       return  state
