@@ -132,6 +132,43 @@ export function submitSubject(token, subject, conv_id) {
 }
 
 
+export function submitAnswer(token, answer, conv_id, answer_type) {
+  const data = querystring.stringify({'token': token, 'answer': answer, 'conv_id':conv_id, 'answer_type': answer_type });
+  const request = new Request('http://localhost:8080/api/conversations/answer', {
+    method: 'POST',
+    headers: new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }),
+    body: data
+  });
+
+  fetch(request)
+    .then((response) => {
+      if(response.ok) {
+        response.json().then((data) => {
+          store.dispatch({
+            type: 'ANSWER_SUCCESS',
+            payload: {
+              question: data.question
+            }
+          })
+        })
+      } else {
+        console.log(response);
+        response.json().then((data) => {
+          console.log("upload fail");
+          store.dispatch({
+            type: 'ANSWER_FAIL',
+            payload: {
+              message: data.message
+            }
+          })
+        })
+      }
+    })
+    .catch( err => console.log(err));
+
+
 export function photoPending () {
   console.log('photo pending action')
      store.dispatch({type:'PHOTO_PENDING', payload: {pending_photo: true}})

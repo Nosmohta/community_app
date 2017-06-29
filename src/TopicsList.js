@@ -29,7 +29,6 @@ class TopicsList extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-
     if (nextProps.conversations.conversations) {
     this.setState({id: nextProps.conversations.conversations.id, conversations: nextProps.conversations.conversations})
     console.log(this.state)

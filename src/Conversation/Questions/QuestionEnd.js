@@ -1,29 +1,19 @@
 import {connect} from 'react-redux';
 import React, {Component} from 'react';
 import 'bulma/css/bulma.css'
-import './Subject.css'
 import {Container} from 'bulma-components';
-import QuestionEnd from './Questions/QuestionEnd';
-import QuestionComTag from './Questions/CommunityTags';
 
 
-class Questions extends Component {
-
+class QuestionEnd extends Component {
 
   render() {
-    console.log(this.props.question.type)
+
     return (
 
-      <div className="question">
-        {{
-          COMMUNITY_TAG: (
-            <QuestionComTag question={this.props.question}/>
-        ),
-          END: (
-            <QuestionEnd question={this.props.question}/>
-        )}[this.props.question.type]}
+      <div>
+          <p> Thank you for contributing to your community! </p>
       </div>
-     )
+    )
   }
 }
 
@@ -52,4 +42,4 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Questions)
+export default connect(mapStateToProps, mapDispatchToProps)(QuestionEnd)
