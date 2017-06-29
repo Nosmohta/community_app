@@ -12,7 +12,7 @@ import './font-awesome-4.7.0/css/font-awesome.css';
 import {photoPending} from '../actions/conversationActions';
 
 const CLOUDINARY_UPLOAD_PRESET = 'lxgfr9q6';
-const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/lyvtg7cjl/image/upload';
+const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/lyvtg7cjl/image/upload/';
 
 class UploadPhoto extends Component {
   constructor(props) {
@@ -79,7 +79,7 @@ class UploadPhoto extends Component {
     let {imagePreviewUrl} = this.state;
     let imagePreview = null;
     if (imagePreviewUrl) {
-      imagePreview = (<div className="imagePreview image"> <img src={imagePreviewUrl} /> </div>);
+      imagePreview = (<div className="imagePreview image"> <img className="imagePreview" src={imagePreviewUrl} /> </div>);
     } else {
       imagePreview = (<div className="imagePreview image"><i className="fa fa-picture-o fa-5x" aria-hidden="true"></i></div>);
     }

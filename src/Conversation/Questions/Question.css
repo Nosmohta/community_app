@@ -1,0 +1,57 @@
+.community {
+ color: white;
+}
+
+div.community {
+  margin-top: 20px;
+  text-align: left;
+  font-size: 20px;
+  width: 350px;
+
+}
+
+label.community {
+  text-align: center;
+  font-size: 18px;
+}
+
+form.community {
+  width: 400px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.radio.community {
+  width: auto;
+  text-align: center;
+  float: left;
+}
+
+div.block {
+  margin-top: 50px;
+  display: block;
+}
+
+div.community.submit {
+  margin-top: 100px;
+  display: block;
+  margin-left: 60px;
+  margin-right: auto;
+}
+@media (max-width: 600px) {
+  div.community.submit {
+    margin-top: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 10px;
+  }
+}
+
+a.button.is-large.submit-topic {
+  width: 300px;
+  background: linear-gradient(#557ebf, #3f69c5);
+}
+
+

@@ -24,6 +24,20 @@ html {
   padding: 0px;
 
 }
+.button.submit-description {
+  background: linear-gradient(#557ebf, #3f69c5);
+}
+a.button.submit-topic.is-large:hover {
+    background: #40e0d0;
+}
+.button.upload-file {
+
+  background: linear-gradient(#557ebf, #3f69c5);
+}
+button.button.upload-file:hover {
+
+  background: #40e0d0;
+}
 
 /*div {
   border-style: solid;

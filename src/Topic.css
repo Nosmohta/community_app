@@ -27,6 +27,7 @@ h1.share.arrow {
 
 div.content {
   padding: 10px;
+  max-width: 430px;
 }
 
 p.title.is-4 {
@@ -116,14 +117,16 @@ div.votes {
   width: 100px;
   position: absolute;
   bottom: -15px;
-  right: -20px;
+  right: -15px;
 }
 
 img.topic-image {
   padding: 0px;
   margin-top: 0px;
-  border-top-right-radius: 10px;
+  max-height: 500px;
   border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
 }
 
 .example-appear {
@@ -199,6 +202,7 @@ img.pointer {
 
 p.tags {
   float: left;
-  color:#d3d3d3;
+  color:#858585;
   font-size: 14px;
+  margin-left: 10px;
 }
