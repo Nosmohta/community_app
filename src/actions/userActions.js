@@ -37,7 +37,8 @@ export function attemptLogin(email, password) {
             payload: {
               logged_in: true,
               message: '',
-              token: data.token
+              token: data.token,
+
             }
           })
         })
@@ -114,7 +115,15 @@ export function attemptLogout() {
             payload: {
               logged_in: false,
               alert_message: 'logout',
-              token: ''
+              token: '',
+              conversations: ''
+            }
+          })
+  store.dispatch({
+            type: 'CLEAR_CONVERSATION',
+            payload: {
+
+              conversations: ''
             }
           })
 }

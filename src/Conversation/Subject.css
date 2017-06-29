@@ -35,6 +35,7 @@ div.container.subject {
   border-bottom: 2px solid white;
   font-size: 20px;
   clear:both;
+  width: 100px;
 }
 
 ::placeholder {
@@ -77,4 +78,10 @@ form.select-subject {
 
 .radio.three {
   position: absolute;
+}
+
+form.subject {
+  display: block;
+
+  margin-left: 20%;
 }

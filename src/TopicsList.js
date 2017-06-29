@@ -84,6 +84,7 @@ class TopicsList extends Component {
             </div>}
 
           <div className="column topics-canvas">
+
            {this.props.topics.topics.map((topic) => <Topic topic={topic} key={topic._id} />)}
           </div>
 

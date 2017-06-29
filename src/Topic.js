@@ -2,12 +2,20 @@ import React, {Component} from 'react';
 import Votes from './Votes.js'
 import hdate from 'human-date'
 import Community from './Community.js'
+import { CSSTransitionGroup } from 'react-transition-group'
+
 class Topic extends Component {
 
 
   render () {
     return (
 
+<CSSTransitionGroup
+            transitionName="example"
+            transitionAppear={true}
+            transitionAppearTimeout={1000}
+            transitionEnter={false}
+            transitionLeave={false}>
 
           <div className="card topic">
             <div className="card-content">
@@ -35,6 +43,7 @@ class Topic extends Component {
 
             </div>
           </div>
+          </CSSTransitionGroup>
       )
 
  }

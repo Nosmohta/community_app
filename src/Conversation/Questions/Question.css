@@ -54,4 +54,8 @@ a.button.is-large.submit-topic {
   background: linear-gradient(#557ebf, #3f69c5);
 }
 
+p.thanks {
+  color: white;
+  text-align: center;
+}
 

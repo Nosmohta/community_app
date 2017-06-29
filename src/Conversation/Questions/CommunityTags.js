@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import 'bulma/css/bulma.css'
 import {Container} from 'bulma-components';
 import './Question.css'
-
+import {loadTopics} from '../../actions/topicActions';
 
 class QuestionComTag extends Component {
   constructor(props){
@@ -11,6 +11,11 @@ class QuestionComTag extends Component {
     this.state = {
         selectedOption: ''
     }
+    this.handleNewTopic = this.handleNewTopic.bind(this);
+  }
+
+  handleNewTopic(e) {
+    loadTopics(this.props.token)
   }
 
   handleOptionChange(changeEvent) {
@@ -18,6 +23,7 @@ class QuestionComTag extends Component {
       selectedOption: changeEvent.target.value
     })
   }
+
 
   handleFormSubmit(formSubmitEvent) {
     formSubmitEvent.preventDefault();
@@ -50,7 +56,7 @@ class QuestionComTag extends Component {
         </form>
         { (this.state.selectedOption) &&
         <div className="community submit">
-          <a className="button is-large submit-topic"  onClick={ (e) => this.props.answerSubmit(e, this.props.token , this.state.selectedOption , this.props.conversations.conv_id, this.props.question.type)}>Add your community tags</a>
+          <a className="button is-large submit-topic"  onMouseDown={this.handleNewTopic} onClick={ (e) => this.props.answerSubmit(e, this.props.token , this.state.selectedOption , this.props.conversations.conv_id, this.props.question.type)}>Add your community tags</a>
         </div>}
 
       </Container>

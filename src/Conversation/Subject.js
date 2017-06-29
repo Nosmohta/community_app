@@ -32,7 +32,7 @@ class Subject extends Component {
 
     return (
       <div className="subject ">
-        <form onSubmit={this.handleFormSubmit}>
+        <form className="subject" onSubmit={this.handleFormSubmit}>
 
         { this.props.conversations.subject_guess_photo &&
         <div className="radio one">

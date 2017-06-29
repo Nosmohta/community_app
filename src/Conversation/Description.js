@@ -55,7 +55,7 @@ class Description extends Component {
       <div className="media-content description">
         <div className="field">
           <p className="control">
-            <textarea autoFocus className="textarea" placeholder="Tell us about your community" defaultValue={this.state.content} onKeyDown={this.onContent}></textarea>
+            <textarea autoFocus className="textarea" placeholder="Tell us about your community" defaultValue={this.state.content} onKeyUp={this.onContent}></textarea>
             <div  className={this.state.over_limit}> {this.state.char_count}/250 </div>
 
             {this.state.content && <button className="button submit-description" onClick={ (e) => this.handleSubmit(e)}>Submit</button>}

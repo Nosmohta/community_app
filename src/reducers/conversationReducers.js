@@ -63,6 +63,10 @@ export default function topicReducer(state = initialState.topics, action) {
       return Object.assign({}, state,
         {...action.payload}
       )
+    case 'CLEAR_CONVERSATIONS':
+      return  Object.assign({}, state,
+        {...action.payload}
+      )
 
     default:
       return state;

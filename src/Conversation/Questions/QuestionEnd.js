@@ -11,7 +11,7 @@ class QuestionEnd extends Component {
     return (
 
       <div>
-          <p> Thank you for contributing to your community! </p>
+          <p className="thanks"> Thank you for contributing to your community! </p>
       </div>
     )
   }
