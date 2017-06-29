@@ -14,6 +14,7 @@ class Header extends Component {
   render() {
           return (
                   <nav className="nav has-shadow">
+                  <img className="community-logo" src="communityup_logo.png"></img>
                     <div className="nav-right">
                     <a className="nav-item">
                     </a>

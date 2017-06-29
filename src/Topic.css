@@ -43,39 +43,42 @@ p.title.is-4 {
     }
 }
 
-.fa-arrow-up {
-   background:  -webkit-linear-gradient(top, rgba(48,42,30,0.55) 0%, rgba(26,24,21,0.2) 100%);
+
+.fa-arrow-circle-o-up {
+   background:  black;
    -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-   opacity: .8;
+   opacity: .4;
 }
 
-.fa-arrow-up:hover {
+.fa-arrow-circle-o-up:hover {
    background: #14e653;
    -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-
-.fa-arrow-up.voted {
-   background: #14e653;
-   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.fa-arrow-down {
-  background: -webkit-linear-gradient(#eee, #333);
-  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   opacity: .8;
 }
 
-.fa-arrow-down:hover {
+
+.fa-arrow-circle-o-up.voted {
+   background: #14e653;
+   -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.fa-arrow-circle-o-down {
+  background: black;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: .4;
+}
+
+.fa-arrow-circle-o-down:hover {
   background: #a42d2d;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  opacity: 0.8;
 }
-.fa-arrow-down.voted {
+.fa-arrow-circle-o-down.voted {
   background: #a42d2d;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -99,18 +102,20 @@ div.topics-page-canvas {
 .upvoteCount {
   color: green;
   font-size: 20px;
+  margin-left: 5px;
 }
 
 .downvoteCount {
   color: red;
   font-size: 20px;
+  margin-left: 5px;
 }
 
 div.votes {
   height: 100px;
   width: 100px;
   position: absolute;
-  bottom: -30px;
+  bottom: -15px;
   right: -20px;
 }
 

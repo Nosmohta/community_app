@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Votes from './Votes.js'
 
-
 class Topic extends Component {
 
 
@@ -23,10 +22,11 @@ class Topic extends Component {
                <p className="title is-4">{this.props.topic.subject}</p>
                  {this.props.topic.description}
                 <br></br>
-                <small>{this.props.topic.date_created}</small>
+                <small>{this.props.topic.created_at}</small>
 
                 <div className="votes">
-                <Votes topic={this.props.topic}  />
+                <Votes topic={this.props.topic} />
+
                 </div>
               </div>
 

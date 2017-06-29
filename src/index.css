@@ -1,6 +1,16 @@
 body {
 
-  background-color:rgba(85, 126, 191, 0.87);
+}
+@media only screen and (max-width: 700px) {
+  body {
+       height:1200px;
+       margin: 0;
+       padding: 0;
+  }
+  html {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 html {

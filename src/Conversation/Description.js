@@ -49,9 +49,10 @@ class Description extends Component {
             {this.state.content && <button className="button submit-description" onClick={this.handleSubmit}>Submit</button>}
           </p>
         </div>
+        </div>
 
         )
-  } else {
+  }
     return (
       <div>
       <i className="fa fa-pencil fa-5x" aria-hidden="true" onClick={this.showDescription}></i>
@@ -60,7 +61,7 @@ class Description extends Component {
 )
   }
 
-  }
+
 }
 const mapStateToProps = (state, ownProps) => {
     return {

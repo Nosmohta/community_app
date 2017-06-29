@@ -31,12 +31,12 @@ class Subject extends Component {
   render () {
 
     return (
-      <Container className="subject ">
+      <div className="subject ">
         <form onSubmit={this.handleFormSubmit}>
 
         { this.props.conversations.subject_guess_photo &&
-        <div className="radio">
-          <label>
+        <div className="radio one">
+          <label className="radio-label">
             <input type="radio" value={this.props.conversations.subject_guess_photo}
                    checked={this.state.selectedOption === this.props.conversations.subject_guess_photo}
                    onChange={(e) => this.handleOptionChange(e)} />
@@ -46,8 +46,8 @@ class Subject extends Component {
         </div>}
 
         {this.props.conversations.subject_guess_description &&
-        <div className="radio">
-          <label>
+        <div className="radio two">
+          <label className="radio-label">
             <input type="radio" value={this.props.conversations.subject_guess_description}
                    checked={this.state.selectedOption === this.props.conversations.subject_guess_description}
                    onChange={ (e) => this.handleOptionChange(e)} />
@@ -57,8 +57,8 @@ class Subject extends Component {
         </div>}
 
         { (this.props.conversations.subject_guess_description) &&
-        <div className="radio">
-          <label>
+        <div className="radio three">
+          <label className="radio-label">
             <input type="radio" value={ $('#other').val() }
                    checked={this.state.selectedOption === $('#other').val() }
                    onChange={(e) => this.handleOptionChange(e)} />
@@ -73,7 +73,7 @@ class Subject extends Component {
           <a className="button is-large submit-topic"  onClick={ (e) => this.props.subjectSubmit(e, this.props.token , this.state.selectedOption , this.props.conversations.conv_id)}>Create Topic</a>
         </div>}
 
-      </Container>
+      </div>
 
 
     )

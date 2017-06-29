@@ -29,9 +29,6 @@ class Conversation extends Component {
 
         <Description/>
 
-        {this.props.conversations.pending_photo &&  <a className="button is-loading">Loading</a>}
-
-
         { this.props.conversations.subject_guess_description &&
         <Subject/>}
 

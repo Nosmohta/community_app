@@ -4,6 +4,10 @@ import './Conversation/font-awesome-4.7.0/css/font-awesome.css'
 import $ from "jquery";
 import {loadTopics} from './actions/topicActions';
 import {attemptCancelUpVote} from './actions/voteActions'
+import {attemptUpVote} from './actions/voteActions'
+import {attemptDownVote} from './actions/voteActions'
+import {attemptCancelDownVote} from './actions/voteActions'
+
 
 class UpVote extends Component {
   constructor(props) {
@@ -12,13 +16,18 @@ class UpVote extends Component {
                   upVotes: this.props.topic.up_votes,
                   downVotes: this.props.topic.down_votes,
                   vote_up: this.props.topic.vote_up,
-                  vote_down: this.props.topic.vote_down
+                  vote_down: this.props.topic.vote_down,
+                  token: this.props.user.token,
+                  id: this.props.topic._id
                  };
     this.handleUpVote = this.handleUpVote.bind(this)
     this.handleCancelUpVote = this.handleCancelUpVote.bind(this);
+    this.handleDownVote = this.handleDownVote.bind(this);
+    this.handleCancelDownVote = this.handleCancelDownVote.bind(this)
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log('votes will recieve', nextProps)
     const token = this.props.user.token;
     this.setState({
                    upVotes: nextProps.topic.up_votes,
@@ -29,42 +38,93 @@ class UpVote extends Component {
     }
 
   shouldComponentUpdate(nextProps, nextState) {
-
+    console.log('votes should update', nextState)
     return true
 
   }
 
-   handleUpVote(e) {
-     const voteId = this.props.topic._id
-
-     $( `#up${voteId}` ).toggleClass( "voted" );
-     $( `#down${voteId}` ).removeClass( "voted" );
-    //  const token = this.props.user.token;
-    //  let delayMillis = 3000; //1 second
-    //  setTimeout(function() {
-    // //your code to be executed after 1 second
-
-    //  loadTopics(token);
-    //  }, delayMillis);
+  handleUpVote(e) {
+     const id = this.state.id
+    const token = this.props.user.token;
+    attemptUpVote(this.props.topic._id, token)
     this.setState({
-                    upVotes:(this.props.topics.up_votes - 1)
-                    vote_up: true
+                    upVotes: this.state.upVotes + 1,
+                    vote_up: true,
+                    vote_down: false
                    })
-   }
 
-   handleCancelUpVote (e) {
-     const token = this.props.user.token;
-     const voteId = this.props.topic._id
-     const arrowId = `up${voteId}`
-
-     attemptCancelUpVote(this.props.topic._id, token)
-
-     $( `#${arrowId}` ).removeClass( "voted" );
-
+     if (this.state.vote_down) {
+     this.setState({
+                    downVotes:(this.state.downVotes - 1),
+                    vote_down: false
+                   })
      let delayMillis = 2000; //2 second
      setTimeout(function() {
-    //loadtopics to be executed after 2 second
-     loadTopics(token);
+     //loadtopics to be executed after 2 second
+     attemptCancelDownVote(id, token)
+
+     }, delayMillis);
+   }
+  }
+
+  handleDownVote(e) {
+      const id = this.state.id
+    console.log("WHAT!!")
+     const token = this.props.user.token;
+     attemptDownVote(this.props.topic._id, token)
+     this.setState({
+                    downVotes: this.state.downVotes + 1,
+                    vote_up: false,
+                    vote_down: true
+                   })
+       if (this.state.vote_up) {
+     this.setState({
+                    upVotes:(this.state.upVotes - 1),
+                    vote_up: false
+                   })
+     let delayMillis = 2000; //2 second
+     setTimeout(function() {
+     //loadtopics to be executed after 2 second
+     attemptCancelUpVote(id, token)
+
+     }, delayMillis);
+    }
+  }
+
+
+   handleCancelUpVote (e) {
+      const token = this.props.user.token;
+     const id = this.state.id
+
+     if (this.state.vote_up) {
+     this.setState({
+                    upVotes:(this.state.upVotes - 1),
+                    vote_up: false
+                   })
+     let delayMillis = 2000; //2 second
+     setTimeout(function() {
+     //loadtopics to be executed after 2 second
+     attemptCancelUpVote(id, token)
+
+     }, delayMillis);
+    }
+   }
+
+   handleCancelDownVote (e) {
+     console.log('cancel down')
+     const token = this.props.user.token;
+     const id = this.state.id
+      console.log(this.state)
+
+     this.setState({
+                    downVotes:(this.state.downVotes - 1),
+                    vote_down: false
+                   })
+     let delayMillis = 2000; //2 second
+     setTimeout(function() {
+     //loadtopics to be executed after 2 second
+     attemptCancelDownVote(id, token)
+
      }, delayMillis);
 
    }
@@ -75,35 +135,62 @@ class UpVote extends Component {
     const token = this.props.user.token
     const arrowId = `up${voteId}`
 
-    if (this.props.topic.vote_up) {
+
+    if (!this.state.vote_up && !this.state.vote_down) {
+      return (
+
+
+             <div className="votes">
+            <div>
+            <i className="fa fa-arrow-circle-o-up fa-2x" id={arrowId} aria-hidden="true"  onClick={this.handleUpVote}>
+            </i><span className="upvoteCount">{this.state.upVotes}</span>
+            </div>
+
+            <div>
+            <i className="fa fa-arrow-circle-o-down fa-2x" id={arrowId} aria-hidden="true" onClick={this.handleDownVote}>
+            </i><span className="downvoteCount">{this.state.downVotes}</span>
+            </div>
+            </div>
+
+        )
+    }
+   else if (this.state.vote_up && !this.state.vote_down) {
         return (
+
+
+
             <div className="votes">
             <div>
-            <i className="fa fa-arrow-up fa-2x voted" id={arrowId} aria-hidden="true"  onMouseUp={this.handleCancelUpVote}>
+            <i className="fa fa-arrow-circle-o-up fa-2x voted" id={arrowId} aria-hidden="true"  onClick={this.handleCancelUpVote} >
             </i><span className="upvoteCount">{this.state.upVotes}</span>
             </div>
 
             <div>
-            <i className="fa fa-arrow-down fa-2x" id={arrowId} aria-hidden="true" onMouseDown={(e) => this.props.attemptDownVote(this.props.topic._id, token)} onMouseUp={this.handleDownVote}>
+            <i className="fa fa-arrow-circle-o-down fa-2x" id={arrowId} aria-hidden="true" onMouseDown={this.handleDownVote}  onMouseUp={this.handleCancelUpVote} >
             </i><span className="downvoteCount">{this.state.downVotes}</span>
             </div>
             </div>
-            )
-      } else if (this.props.topic.vote_down) {
-          return (
-            <div className="votes">
+
+        )
+      }
+
+    else  {
+      return (
+             <div className="votes">
             <div>
-            <i className="fa fa-arrow-up fa-2x" id={arrowId} aria-hidden="true"  onMouseUp={this.handleCancelUpVote}>
+            <i className="fa fa-arrow-circle-o-up fa-2x" id={arrowId} aria-hidden="true"  onMouseDown={this.handleUpVote} onClick={this.handleCancelDownVote}>
             </i><span className="upvoteCount">{this.state.upVotes}</span>
             </div>
 
             <div>
-            <i className="fa fa-arrow-down fa-2x" id={arrowId} aria-hidden="true" onMouseDown={(e) => this.props.attemptDownVote(this.props.topic._id, token)} onMouseUp={this.handleDownVote}>
+            <i className="fa fa-arrow-circle-o-down fa-2x voted" id={arrowId} aria-hidden="true" onClick={this.handleCancelDownVote} >
             </i><span className="downvoteCount">{this.state.downVotes}</span>
             </div>
             </div>
             )
-        }
+    }
+
+
   }
 }
 

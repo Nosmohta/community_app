@@ -12,7 +12,7 @@ input.conversation-input {
 
 div.media-content.description{
   width: 400px;
-
+  margin-bottom: 50px;
 }
 @media only screen and (max-width: 700px) {
     div.media-content.description {
