@@ -39,13 +39,25 @@ export default function topicReducer(state = initialState.topics, action) {
         {questions: [action.payload.question] }
       )
 
-
     case 'SUBJECT_FAIL':
       return Object.assign({}, state,
         {...action.payload}
       )
 
+    case 'ANSWER_SUBMIT':
+      Conversations.submitAnswer(action.payload.token, action.payload.answer, action.payload.conv_id , action.payload.answer_type )
+      return  state
 
+    case 'ANSWER_SUCCESS':
+      return {
+        ...state,
+        questions: [...state.questions, action.payload.question]
+      }
+
+    case 'ANSWER_FAIL':
+      return Object.assign({}, state,
+        {...action.payload}
+      )
 
     default:
       return state;

@@ -32,7 +32,10 @@ class Conversation extends Component {
         { this.props.conversations.subject_guess_description &&
         <Subject/>}
 
-        <Questions/>
+        { this.props.conversations.questions &&
+            <div className="">
+              {this.props.conversations.questions.map((question, i) => <Questions question={question}  key={i} />)}
+            </div>}
 
 
         {this.props.conversations.message &&
