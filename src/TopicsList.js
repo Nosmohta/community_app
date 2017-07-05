@@ -108,7 +108,7 @@ class TopicsList extends Component {
                   <Columns>
                   <form className="register">
                   <img className="logo" src="YourCityLogo.png" alt="Smiley face" height="150" width="150"/ >
-                  <h1 className="form-title">Welcome to Community App</h1>
+                  <h1 className="form-title">Welcome to CommunityUp</h1>
                     <br></br>
                     <p className="control">
                      <Link className="button is-outlined is-large" to='/register'>Sign Up!</Link>
