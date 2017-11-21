@@ -17,4 +17,17 @@ img.community-logo {
   height: 40px;
   margin-left: 20px;
   margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 500px) {
+
+  img.community-logo {
+    width: 200px;
+    height: 30px;
+  }
+
+  .nav {
+    height: 45px;
+  }
 }
