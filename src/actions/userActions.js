@@ -20,7 +20,7 @@ export function loadUsersSuccess(users) {
 
 export function attemptLogin(email, password) {
   const data = querystring.stringify({'email': email, 'password': password})
-  const request = new Request('http://localhost:8080/login', {
+  const request = new Request('https://community-up-api.herokuapp.com/login', {
     method: 'POST',
     headers: new Headers({
       'Content-Type': 'application/x-www-form-urlencoded'
@@ -32,6 +32,7 @@ export function attemptLogin(email, password) {
       if(response.ok) {
         response.json().then((data) => {
           console.log("action success")
+          localStorage.setItem('apiToken', data.token)
           store.dispatch({
             type: 'LOGIN_SUCCESS',
             payload: {
@@ -45,6 +46,7 @@ export function attemptLogin(email, password) {
       } else {
         response.json().then((data) => {
           console.log("action fail")
+          localStorage.removeItem('apiToken');
           store.dispatch({
             type: 'LOGIN_FAIL',
             payload: {
@@ -70,7 +72,7 @@ export function attemptRegister(firstname, lastname, email, password) {
     'password': password.toLowerCase()
   })
 
-  const request = new Request('http://localhost:8080/register', {
+  const request = new Request('https://community-up-api.herokuapp.com/register', {
     method: 'POST',
     headers: new Headers({
       'Content-Type': 'application/x-www-form-urlencoded'
@@ -110,6 +112,7 @@ export function attemptRegister(firstname, lastname, email, password) {
 }
 
 export function attemptLogout() {
+  localStorage.removeItem('apiToken');
   store.dispatch({
             type: 'ATTEMPT_LOGOUT',
             payload: {

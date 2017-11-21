@@ -8,7 +8,7 @@ export function attemptUpload(img, token, conv_id) {
   const data = querystring.stringify({'token': token, 'img': img , 'conv_id': conv_id});
   const file = img
   console.log('attempt upload ', data);
-  const request = new Request('http://localhost:8080/upload/conversations/photo', {
+  const request = new Request('https://community-up-api.herokuapp.com/upload/conversations/photo', {
     method: 'POST',
     headers: new Headers({
       'Content-Type': 'application/x-www-form-urlencoded'
@@ -52,7 +52,7 @@ export function attemptUpload(img, token, conv_id) {
 export function attemptAddDescription(token, description, conv_id) {
 
   const data = querystring.stringify({'token': token, 'description': description, 'conv_id': conv_id });
-  const request = new Request('http://localhost:8080/api/conversations/description', {
+  const request = new Request('https://community-up-api.herokuapp.com/api/conversations/description', {
     method: 'POST',
     headers: new Headers({
       'Content-Type': 'application/x-www-form-urlencoded'
@@ -93,7 +93,7 @@ export function attemptAddDescription(token, description, conv_id) {
 export function submitSubject(token, subject, conv_id) {
   console.log('attempt add subject ', subject + token)
   const data = querystring.stringify({'token': token, 'subject': subject, 'conv_id':conv_id });
-  const request = new Request('http://localhost:8080/api/conversations/subject', {
+  const request = new Request('https://community-up-api.herokuapp.com/api/conversations/subject', {
     method: 'POST',
     headers: new Headers({
       'Content-Type': 'application/x-www-form-urlencoded'
@@ -134,7 +134,7 @@ export function submitSubject(token, subject, conv_id) {
 
 export function submitAnswer(token, answer, conv_id, answer_type) {
   const data = querystring.stringify({'token': token, 'answer': answer, 'conv_id':conv_id, 'answer_type': answer_type });
-  const request = new Request('http://localhost:8080/api/conversations/answer', {
+  const request = new Request('https://community-up-api.herokuapp.com/api/conversations/answer', {
     method: 'POST',
     headers: new Headers({
       'Content-Type': 'application/x-www-form-urlencoded'

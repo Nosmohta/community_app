@@ -1,4 +1,4 @@
-import initialState from './initialState';
+import initialState from './initialState'
 import Login from '../Login'
 
 import * as Actions from '../actions/userActions'
@@ -27,7 +27,6 @@ export default function userReducer(state = initialState.users, action) {
           action.payload
         )
 
-
     case 'ATTEMPT_REGISTER':
       Actions.attemptRegister(action.payload.firstName, action.payload.lastName,action.payload.email, action.payload.password )
       return state
@@ -41,7 +40,6 @@ export default function userReducer(state = initialState.users, action) {
       return Object.assign({}, state,
         action.payload
       )
-
 
     case 'CLEAR_MESSAGE':
       return Object.assign({}, state,
@@ -61,4 +59,3 @@ export default function userReducer(state = initialState.users, action) {
 
   }
 }
-

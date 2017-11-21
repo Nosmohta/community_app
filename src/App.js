@@ -15,14 +15,26 @@ class App extends Component {
  render() {
     return (
       <Router>
-         <Switch>
-            <Route path='/home' component={Home}/>
-            <Route path='/topics' component={Topics}/>
-            <Route path='/register' render={() =>
-              (this.props.logged_in ? ( <Redirect to="/topics"/>) : (<Register/>))}/>
-            <Route exact path="/login" render={() =>
-               (this.props.logged_in ? ( <Redirect to="/topics"/>) : (<Login/>))}/>
-         </Switch>
+        <div className="App">
+          {this.props.logged_in && (
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route path='/home' component={Home} />
+              <Route exact path="/topics" component={Topics} />
+              <Redirect from="/login" to="/topics" />
+              <Redirect from="/signup" to="/topics" />
+            </Switch>
+          )}
+          {!this.props.logged_in && (
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route path='/home' component={Home} />
+              <Route path='/register' component={Register} />
+              <Route exact path="/login" component={Login} />
+              <Redirect from="/topics" to="/" />
+            </Switch>
+          )}
+        </div>
       </Router>
     );
   }
@@ -36,4 +48,3 @@ const mapStateToProps = (state) => {
 
 
 export default connect(mapStateToProps)(App)
-

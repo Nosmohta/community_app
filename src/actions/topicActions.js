@@ -7,7 +7,7 @@ export function loadTopics(token) {
 
   const data = querystring.stringify({'token': token });
   let auth = 'JWT ' + token;
-  const request = new Request('http://localhost:8080/api/topics', {
+  const request = new Request('https://community-up-api.herokuapp.com/api/topics', {
     method: 'POST',
     headers: new Headers({
       'Content-Type': 'application/x-www-form-urlencoded'

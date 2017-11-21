@@ -3,7 +3,7 @@ import querystring from 'querystring';
 
 export function attemptUpVote(topic_id, token) {
   const data = querystring.stringify({'topic_id': topic_id, 'token': token, 'vote_up': true, 'vote_down': false});
-  const request = new Request('http://localhost:8080/api/topics/' + topic_id  +'/vote', {
+  const request = new Request('https://community-up-api.herokuapp.com/api/topics/' + topic_id  +'/vote', {
     method: 'POST',
     headers: new Headers({
       'Content-Type': 'application/x-www-form-urlencoded'
@@ -42,7 +42,7 @@ export function attemptUpVote(topic_id, token) {
 export function attemptDownVote(topic_id, token) {
   console.log('attemptDownVote')
   const data = querystring.stringify({'topic_id': topic_id, 'token': token, 'vote_up': false, 'vote_down': true })
-  const request = new Request('http://localhost:8080/api/topics/' + topic_id  +'/vote', {
+  const request = new Request('https://community-up-api.herokuapp.com/api/topics/' + topic_id  +'/vote', {
     method: 'POST',
     headers: new Headers({
       'Content-Type': 'application/x-www-form-urlencoded'
@@ -83,7 +83,7 @@ export function attemptCancelDownVote(topic_id, token) {
   console.log('attempt Cancel Down Vote', store.getState().topics.topics)
   const topics = store.getState().topics.topics
   const data = querystring.stringify({'topic_id': topic_id, 'token': token, 'vote_up': false, 'vote_down': true })
-  const request = new Request('http://localhost:8080/api/topics/' + topic_id  +'/cancel', {
+  const request = new Request('https://community-up-api.herokuapp.com/api/topics/' + topic_id  +'/cancel', {
     method: 'POST',
     headers: new Headers({
       'Content-Type': 'application/x-www-form-urlencoded'
@@ -124,7 +124,7 @@ export function attemptCancelDownVote(topic_id, token) {
 export function attemptCancelUpVote(topic_id, token) {
   console.log('attempt Cancel Up Vote')
   const data = querystring.stringify({'topic_id': topic_id, 'token': token, 'vote_up': false, 'vote_down': true })
-  const request = new Request('http://localhost:8080/api/topics/' + topic_id  +'/cancel', {
+  const request = new Request('https://community-up-api.herokuapp.com/api/topics/' + topic_id  +'/cancel', {
     method: 'POST',
     headers: new Headers({
       'Content-Type': 'application/x-www-form-urlencoded'

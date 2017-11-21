@@ -1,6 +1,6 @@
 class TopicApi {
   static getAllTopics() {
-    return fetch('http://localhost:8080/api/topics').then(response => {
+    return fetch('https://community-up-api.herokuapp.com/api/topics').then(response => {
       console.log(response)
       return response.json();
     }).catch(error => {

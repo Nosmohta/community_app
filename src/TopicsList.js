@@ -23,9 +23,9 @@ class TopicsList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-                  id: '',
-                  conversations: {}
-                 };
+      id: '',
+      conversations: {}
+     };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -49,7 +49,9 @@ class TopicsList extends Component {
 
         <div className="container topics-page-canvas">
            <Header></Header>
+
            <img className="logo" src="YourCityLogo.png" alt="CityLogo" height="150" width="150"/ >
+
            <CSSTransitionGroup
             transitionName="example"
             transitionAppear={true}
@@ -149,4 +151,3 @@ const mapStateToProps = (state, ownProps) => {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopicsList);
-
