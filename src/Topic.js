@@ -30,14 +30,13 @@ class Topic extends Component {
               </div>
 
               <div className="content">
-               <p className="title is-4">{this.props.topic.subject}</p>
-                 <p className="description">{this.props.topic.description}</p>
-
-                <small>{hdate.prettyPrint(this.props.topic.created_at)}</small>
-
+                <div className="description-container">
+                  <p className="title is-4">{this.props.topic.subject}</p>
+                  <p className="description">{this.props.topic.description}</p>
+                  <small className="topic-date">{hdate.prettyPrint(this.props.topic.created_at)}</small>
+                </div>
                 <div className="votes">
-                <Votes topic={this.props.topic} />
-
+                  <Votes topic={this.props.topic} />
                 </div>
               </div>
 
